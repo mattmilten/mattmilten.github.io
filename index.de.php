@@ -142,6 +142,6 @@ fclose($fd);
       Technische Universit&auml;t Berlin</a>, 2009
       </li>
       </ul>
-   <div class="col2">letzte &Auml;nderung: 26.07.2011</div>
+   <div class="col2">letzte &Auml;nderung: 30.07.2012</div>
 </body>
 </html>

@@ -5,8 +5,8 @@ set -e
 
 WWWDIR=/www/Abt-Optimization/Personal/miltenberger
 
-echo "pushing repository..."
-git push
+#echo "pushing repository..."
+#git push
 
 echo "exporting..."
 git archive master | tar -x -C $WWWDIR
