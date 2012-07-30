@@ -7,6 +7,10 @@ body {
    padding:3px 20px 0cm 20px;
    margin-top:20pt;
 }
+#mainContainer {
+margin:0 auto;
+text-align:left;
+}
 a:link {
   text-decoration:none; color:#06c;
 }
