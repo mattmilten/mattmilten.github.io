@@ -18,7 +18,6 @@ fclose($fd);
 ?>
 </head>
 <body>
-<div align="center"> 
    <table width="100%">
    <tr>
       <td colspan="3" align="right"><a href="index.de.php">Deutsch</a></td>
@@ -144,6 +143,5 @@ fclose($fd);
       </li>
    </ul>
       <div class="col2">last modified: 26.07.2011</div>
-</div>
 </body>
 </html>
