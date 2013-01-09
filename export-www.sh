@@ -3,12 +3,10 @@
 WWWDIR=/www/Abt-Optimization/Personal/miltenberger
 
 echo "pushing repository..."
-if ! git push
-  exit
+git push || exit
 
 echo "exporting..."
-if ! git archive master | tar -x -C $WWWDIR
-  exit
+git archive master | tar -x -C $WWWDIR
 
 echo "setting permissions..."
 cd $WWWDIR
