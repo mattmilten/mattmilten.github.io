@@ -142,6 +142,6 @@ fclose($fd);
       Technische Universit&auml;t Berlin</a>, 2009
       </li>
       </ul>
-   <div class="col2">letzte &Auml;nderung: <!--#config timefmt="%A, %d-%B-%Y %I:%M:%S %p %Z" --> <!--#echo var="LAST_MODIFIED" --></div>
+   <div class="col2">letzte &Auml;nderung: 09.01.2013</div>
 </body>
 </html>
