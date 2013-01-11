@@ -2,7 +2,7 @@
 <html>
 <head>
    <title>Matthias Miltenberger - Zuse Institute Berlin</title>
-   <link rel="stylesheet" style type="text/css" media="screen" href="style.css">
+   <link rel="stylesheet" type="text/css" media="screen" href="style.css">
    <link rel="icon" href="http://www.zib.de/uploads/tf/favicon.ico"
          type="image/x-ms-bmp; charset=binary">
    <meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -77,21 +77,15 @@ fclose($fd);
 
    <h1 class="col3">Projects and current work</h1>
       <ul>
-      <p>
       <li>
       <a href="http://www.zib.de/en/projects/current-projects/project-details/article/neue-technologien-zur-loesung-von-scm-problemen.html">Advanced Solver Technology for Supply Chain Management</a> (cooperation with <a href="http://www.sap.com/germany/index.epx">SAP</a>):<br>Development of a new LP solver for use within <a href="http://scip.zib.de">SCIP</a>
       </li>
-      </p>
-      <p>
       <li>
       Administration of the version control system <a href="http://git-scm.com/">Git</a> for the department optimization at <a href="http://www.zib.de">ZIB</a>
       </li>
-      </p>
-      <p>
       <li>
       Maintenance and development of the LP solver <a href="http://soplex.zib.de">SoPlex</a>
       </li>
-      </p>
       </ul>
 
    <h1 class="col3">Short Academic CV</h1>
