@@ -77,15 +77,15 @@ fclose($fd);
 
    <h1 class="col3">Projects and current work</h1>
       <ul>
-      <li>
+      <li><p>
       <a href="http://www.zib.de/en/projects/current-projects/project-details/article/neue-technologien-zur-loesung-von-scm-problemen.html">Advanced Solver Technology for Supply Chain Management</a> (cooperation with <a href="http://www.sap.com/germany/index.epx">SAP</a>):<br>Development of a new LP solver for use within <a href="http://scip.zib.de">SCIP</a>
-      </li>
+      </p></li>
       <li><p>
       Administration of the version control system <a href="http://git-scm.com/">Git</a> for the department optimization at <a href="http://www.zib.de">ZIB</a>
-      </li>
-      <li>
+      </p></li>
+      <li><p>
       Maintenance and development of the LP solver <a href="http://soplex.zib.de">SoPlex</a>
-      </li>
+      </p></li>
       </ul>
 
    <h1 class="col3">Short Academic CV</h1>
