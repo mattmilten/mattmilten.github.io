@@ -124,6 +124,17 @@ fclose($fd);
       </tr>
       </table>
    <h1 class="col3">Publikationen</h1>
+   <ul>
+      <li>
+      <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
+      Progress in Presolving for Mixed Integer Programming</a>
+      </b>
+      <br>
+      <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
+      <br>
+      ZIB-Report, 2013
+      </li>
+   </ul>
       <ul>
       <li>
       <b><a href="miltenberger_diplomarbeit.pdf">
@@ -136,17 +147,6 @@ fclose($fd);
       Technische Universit&auml;t Berlin</a>, 2009
       </li>
       </ul>
-   <ul>
-      <li>
-      <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
-      Progress in Presolving for Mixed Integer Programming</a>
-      </b>
-      <br>
-      <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
-      <br>
-      ZIB-Report, 2013
-      </li>
-   </ul>
    <h1 class="col3">Wissenschaftliche Vortr&auml;ge</h1>
       <ul><li>
       <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>

@@ -126,6 +126,17 @@ fclose($fd);
    <h1 class="col3">Publications</h1>
    <ul>
       <li>
+      <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
+      Progress in Presolving for Mixed Integer Programming</a>
+      </b>
+      <br>
+      <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
+      <br>
+      ZIB-Report, 2013
+      </li>
+   </ul>
+   <ul>
+      <li>
    <b><a href="miltenberger_diplomarbeit.pdf">
       Die IDR(s)-Methode zur L&ouml;sung von parametrisierten Gleichungssystemen</a>
    </b>
@@ -134,17 +145,6 @@ fclose($fd);
    <br>
       Diploma Thesis, <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
       Technische Universit&auml;t Berlin</a>, 2009
-      </li>
-   </ul>
-   <ul>
-      <li>
-      <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
-      Progress in Presolving for Mixed Integer Programming</a>
-      </b>
-      <br>
-      <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
-      <br>
-      ZIB-Report, 2013
       </li>
    </ul>
    <h1 class="col3">Scientific Talks</h1>
