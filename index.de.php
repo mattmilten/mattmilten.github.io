@@ -149,6 +149,13 @@ fclose($fd);
       </ul>
    <h1 class="col3">Wissenschaftliche Vortr&auml;ge</h1>
       <ul><li>
+      <b>Vortragsreihe</b>
+      <br>
+      Matthias Miltenberger, Gerald Gamrath
+      <br>
+      <a href="http://vie.math.ac.vn/index.php/component/content/article/60-cac-hot-ng-khoa-hc-sp-din-ra/356-fall-school-on-numerical-mathematics-and-optimization"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
+      </li></ul>
+      <ul><li>
       <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
       <br>
       <em>Matthias Miltenberger</em>, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
