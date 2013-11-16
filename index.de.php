@@ -115,7 +115,7 @@ fclose($fd);
          <img src="logo_matheon.gif" width="50pt" border="0" alt="Matheon"></a></td>
       </tr>
       <tr>
-      <td>since 07/2010</td>
+      <td>seit 07/2010</td>
       <td><a href="http://www.zib.de">
          Zuse-Institut Berlin (ZIB)</a>:
          Wissenschaftlicher Mitarbeiter, Abteilung Optimierung</td>
