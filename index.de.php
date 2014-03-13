@@ -153,7 +153,7 @@ fclose($fd);
       <br>
       Matthias Miltenberger, Gerald Gamrath
       <br>
-      <a href="http://vie.math.ac.vn/index.php/component/content/article/60-cac-hot-ng-khoa-hc-sp-din-ra/356-fall-school-on-numerical-mathematics-and-optimization"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
+      <a href="http://vie.math.ac.vn/learning/index.php?option=com_content&view=article&id=337:trng-thu-qnumerical-mathematics-and-optimizationqti-vin-toan-hc-07102013-2510201352013&catid=39:cao-hoc-quoc-te&Itemid=93"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
       </li></ul>
       <ul><li>
       <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
