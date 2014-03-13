@@ -78,8 +78,7 @@ fclose($fd);
    <h1 class="col3">Projekte und aktuelle Aufgaben</h1>
       <ul>
       <li><p>
-      <a href="http://www.zib.de/de/projekte/aktuelle-projekte/projekte-detail/article/neue-technologien-zur-loesung-von-scm-problemen.html">Entwicklung eines neuen LP-L&ouml;sers</a> f&uuml;r die Verwendung innerhalb von <a href="http://scip.zib.de">SCIP</a>, insbesondere zur
-      Behandlung von Problemen des Supply-Chain-Managements (in Kooperation mit <a href="http://www.sap.com/germany/index.epx">SAP</a>)
+      <a href="http://www.zib.de/de/projekte/aktuelle-projekte/projekte-detail/article/neue-technologien-zur-loesung-von-scm-problemen.html">Entwicklung neuer L&ouml;sungstechnologien vor allem zur Behandlung von Problemen des Supply-Chain-Managements (in Kooperation mit <a href="http://www.sap.com/germany/index.epx">SAP</a>)
       </p></li>
       <li><p>
       Administration des Versionsverwaltungssystems <a href="http://git-scm.com/">Git</a> f&uuml;r die Abteilung Optimierung am <a href="http://www.zib.de">ZIB</a>

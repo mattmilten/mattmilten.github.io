@@ -17,6 +17,6 @@ echo "pushing repository..."
 git push || exit
 
 echo "syncing $PAGE..."
-$COPY $COPYFLAGS --exclude-from=.gitignore . $WWWDIR
+$COPY $COPYFLAGS --exclude=.git --exclude-from=.gitignore . $WWWDIR
 
 exit
