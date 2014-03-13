@@ -86,6 +86,9 @@ fclose($fd);
       <li><p>
       Maintenance and development of the LP solver <a href="http://soplex.zib.de">SoPlex</a>
       </p></li>
+      <li><p>
+      Webdesign for the <a href="http://scip.zib.de">SCIP Optimization Suite</a>
+      </p></li>
       </ul>
 
    <h1 class="col3">Short Academic CV</h1>

@@ -86,6 +86,9 @@ fclose($fd);
       <li><p>
       Pflege und Weiterentwicklung des LP-L&ouml;sers <a href="http://soplex.zib.de">SoPlex</a>
       </p></li>
+      <li><p>
+      Webdesign für die <a href="http://scip.zib.de">SCIP Optimization Suite</a>
+      </p></li>
       </ul>
    <h1 class="col3">kurzer akademischer Lebenslauf</h1>
       <table width="100%" cellpadding="4">
