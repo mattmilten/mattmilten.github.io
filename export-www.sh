@@ -1,10 +1,10 @@
 #!/bin/bash
 
-WWWDIR=/www/Abt-Optimization/Personal/miltenberger
+WWWDIR=$USER@opts1.zib.de:/www/Abt-Optimization/Personal/miltenberger
 
 # rsync copies user file permission, better than cp
 COPY=rsync
-COPYFLAGS="--checksum --compress --verbose --owner --recursive --chmod=g+w,+X,a+r"
+COPYFLAGS="--checksum --compress --verbose --owner --recursive --chmod=g+w,+X,a+r --blocking-io"
 
 if ! git diff --quiet HEAD
 then
