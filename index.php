@@ -153,6 +153,23 @@ fclose($fd);
    <h1 class="col3">Scientific Talks</h1>
       <ul><li>
       <b>Lecture</b>
+
+      <br>
+      Matthias Miltenberger
+      <br>
+      <a href="http://www.ifors2014.org/"> IFORS 2014</a>, Centre de Convencions Internacional de Barcelona
+      </li></ul>
+      <ul><li>
+      <b>SoPlex 2.0</b>
+
+      <br>
+      Matthias Miltenberger
+      <br>
+      <a href="http://europt2014.univ-perp.fr/"> 12th EUROPT Workshop on Advances in Continuous Optimization 2014</a>, Université de Perpignan Via Domitia
+      </li></ul>
+      <ul><li>
+      <b>Sequential Linear Programming with SoPlex</b>
+
       <br>
       Matthias Miltenberger, Gerald Gamrath
       <br>
@@ -160,50 +177,57 @@ fclose($fd);
       </li></ul>
       <ul><li>
       <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
+
       <br>
-      <em>Matthias Miltenberger</em>, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
+      Matthias Miltenberger, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
       <br>
       <a href="http://www.eur.nl/ese/english/departments/department_of_econometrics/or2013/home/"> OR 2013</a>, Erasmus Universiteit Rotterdam
       </li></ul>
       <ul><li>
       <b>Challenges in Linear Programming and how SoPlex deals with them</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
       </li></ul>
       <ul><li>
       <b>Challenges in Linear Programming and how SoPlex deals with them</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://eventos.fct.unl.pt/iccopt2013/pages/home"> ICCOPT 2013</a>, FCT Universidade Nova de Lisboa
       </li></ul>
       <ul><li>
       <b>Advances in Linear Programming</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
       </li></ul>
       <ul><li>
       <b>The SCIP Optimization Suite 3.0 - It's all in the bag!</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://www.or2012.de/"> OR 2012</a>, Leibniz Universit&auml;t Hannover
       </li></ul>
       <ul><li>
       <b>Advances in Linear Programming</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://ismp2012.mathopt.org/"> ISMP 2012</a>, TU Berlin
       </li></ul>
       <ul><li>
       <b>Solving large-scale Linear Programming Problems</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://www.apmod.org/"> APMOD 2012</a>, Paderborn
       </li></ul>
@@ -212,15 +236,17 @@ fclose($fd);
       </li>
       <li>
       <b>The IDR method for solving large nonsymmetric parameterized linear systems</b>
+
       <br>
-      <em>Matthias Miltenberger</em>
+      Matthias Miltenberger
       <br>
       <a href="http://meetings2.informs.org/charlotte2011/index.php"> INFORMS 2011</a>, Charlotte, North Carolina
       </li></ul>
       <ul><li>
       <b>Sudoku vs. Graphenf&auml;rbung: Wenn alles verschieden sein muss</b>
+
       <br>
-      <em>Matthias Miltenberger</em>, Timo Berthold
+      Matthias Miltenberger, Timo Berthold
       <br>
       <a href="http://www.matheon.de/schools/mathinside/"> MathInside 2011</a>, Urania, Berlin
       </li></ul>
