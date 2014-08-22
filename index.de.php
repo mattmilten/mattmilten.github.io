@@ -150,80 +150,80 @@ fclose($fd);
       </li>
       </ul>
    <h1 class="col3">Wissenschaftliche Vortr&auml;ge</h1>
-      <ul><li>
-      <b>Vortragsreihe</b>
+<ul><li>
+      <b>SoPlex 2.0</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://www.ifors2014.org/"> IFORS 2014</a>, Centre de Convencions Internacional de Barcelona
       </li></ul>
       <ul><li>
-      <b>SoPlex 2.0</b>
 
+      <b>Sequential Linear Programming with SoPlex</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://europt2014.univ-perp.fr/"> 12th EUROPT Workshop on Advances in Continuous Optimization 2014</a>, Université de Perpignan Via Domitia
       </li></ul>
       <ul><li>
-      <b>Sequential Linear Programming with SoPlex</b>
 
+      <b>Lecture</b>
       <br>
       Matthias Miltenberger, Gerald Gamrath
       <br>
       <a href="http://vie.math.ac.vn/learning/index.php?option=com_content&view=article&id=337:trng-thu-qnumerical-mathematics-and-optimizationqti-vin-toan-hc-07102013-2510201352013&catid=39:cao-hoc-quoc-te&Itemid=93"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
       </li></ul>
       <ul><li>
-      <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
 
+      <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
       <br>
       Matthias Miltenberger, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
       <br>
       <a href="http://www.eur.nl/ese/english/departments/department_of_econometrics/or2013/home/"> OR 2013</a>, Erasmus Universiteit Rotterdam
       </li></ul>
       <ul><li>
-      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
 
+      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
       </li></ul>
       <ul><li>
-      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
 
+      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://eventos.fct.unl.pt/iccopt2013/pages/home"> ICCOPT 2013</a>, FCT Universidade Nova de Lisboa
       </li></ul>
       <ul><li>
-      <b>Advances in Linear Programming</b>
 
+      <b>Advances in Linear Programming</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
       </li></ul>
       <ul><li>
-      <b>The SCIP Optimization Suite 3.0 - It's all in the bag!</b>
 
+      <b>The SCIP Optimization Suite 3.0 - It's all in the bag!</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://www.or2012.de/"> OR 2012</a>, Leibniz Universit&auml;t Hannover
       </li></ul>
       <ul><li>
-      <b>Advances in Linear Programming</b>
 
+      <b>Advances in Linear Programming</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://ismp2012.mathopt.org/"> ISMP 2012</a>, TU Berlin
       </li></ul>
       <ul><li>
-      <b>Solving large-scale Linear Programming Problems</b>
 
+      <b>Solving large-scale Linear Programming Problems</b>
       <br>
       Matthias Miltenberger
       <br>
@@ -233,16 +233,16 @@ fclose($fd);
       <b>Large-scale LP solving</b>
       </li>
       <li>
-      <b>The IDR method for solving large nonsymmetric parameterized linear systems</b>
 
+      <b>The IDR method for solving large nonsymmetric parameterized linear systems</b>
       <br>
       Matthias Miltenberger
       <br>
       <a href="http://meetings2.informs.org/charlotte2011/index.php"> INFORMS 2011</a>, Charlotte, North Carolina
       </li></ul>
       <ul><li>
-      <b>Sudoku vs. Graphenf&auml;rbung: Wenn alles verschieden sein muss</b>
 
+      <b>Sudoku vs. Graphenf&auml;rbung: Wenn alles verschieden sein muss</b>
       <br>
       Matthias Miltenberger, Timo Berthold
       <br>
