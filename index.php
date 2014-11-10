@@ -78,7 +78,7 @@ fclose($fd);
    <h1 class="col3">Projects and current work</h1>
       <ul>
       <li><p>
-      <a href="http://www.zib.de/en/projects/current-projects/project-details/article/neue-technologien-zur-loesung-von-scm-problemen.html">Advanced Solver Technology for Supply Chain Management</a> (cooperation with <a href="http://www.sap.com/germany/index.epx">SAP</a>)
+      <a href="http://www.zib.de/projects/development-new-linear-and-integer-programming-techniques-solve-supply-chain-management-problems">Advanced Solver Technology for Supply Chain Management</a> (cooperation with <a href="http://www.sap.com/germany/index.epx">SAP</a>)
       </p></li>
       <li><p>
       Administration of the version control system <a href="http://git-scm.com/">Git</a> for the department optimization at <a href="http://www.zib.de">ZIB</a>
