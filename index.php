@@ -1,12 +1,19 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-   <title>Matthias Miltenberger - Zuse Institute Berlin</title>
-   <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-   <link rel="icon" href="http://www.zib.de/uploads/tf/favicon.ico"
-         type="image/x-ms-bmp; charset=binary">
-   <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<?php
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans|Josefin+Slab' rel='stylesheet' type='text/css'>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+   <!--   load css styles -->
+   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="bootstrap/css/custom.css">
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   <script src="bootstrap/js/jquery.js"></script>
+   <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+   <title>Matthias Miltenberger</title>
+<!--<?php
 $filename= "counter_en.txt";
 $fd = fopen ($filename , "r");
 $fstring = fread ($fd , filesize ($filename));
@@ -15,9 +22,36 @@ $fd = fopen ($filename , "w");
 $fcounted = $fstring + 1;
 $fout= fwrite ($fd , $fcounted );
 fclose($fd);
-?>
+?>-->
 </head>
 <body>
+<!--<?php include ('banner.inc')?>-->
+   <div class="container bs-docs-container">
+      <div class="row">
+         <div class="col-md-12">
+            <?php include ('english.inc')?>
+         </div>
+         <!-- end col-md-12 -->
+      </div>
+      <!-- end row -->
+   </div>
+   <!-- end container -->
+   <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <?php include('footer.inc'); ?>
+            </div>
+         </div>
+      </div>
+   </footer>
+</body>
+
+<!--
+
+
+
+
    <table width="100%">
    <tr>
       <td colspan="3" align="right"><a href="index.de.php">Deutsch</a></td>
@@ -260,5 +294,5 @@ fclose($fd);
       </li></ul>
 
       <div class="col2">last modified: <?php echo date("d.m.Y",filectime("index.de.php")); ?> </div>
-</body>
+</body>-->
 </html>
