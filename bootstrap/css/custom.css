@@ -1,4 +1,7 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+.domain::before {
+    content: "\0040";    /* Unicode character for @ symbol */
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 40px;

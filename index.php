@@ -71,8 +71,8 @@
             14195 Berlin (Germany)<br>
           </address>
           <address>
-            Phone:  +49 30 84185 245<br>
-            e-Mail: miltenberger<img src="klammeraffe.gif" align="top" border="0" alt="at">zib.de<br>
+            phone:  +49 30 84185 245<br>
+            e-mail: miltenberger<span class="domain">zib.de</span><br>
           </address>
         </div>
       </div>
@@ -312,6 +312,7 @@
           <a href="http://www.matheon.de/schools/mathinside/"> MathInside 2011</a>, Urania, Berlin
           </li>
 
+        </ul>
       </div>
     </div> <!-- /container -->
 
