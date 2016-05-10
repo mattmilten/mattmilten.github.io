@@ -33,7 +33,7 @@
       <hr>
 
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="col-sm-7 col-md-4 col-lg-4">
           <h2>About<br><small>Mathematician and Software Engineer</small></h2>
           <strong>Interests include:</strong><br>Optimization, C/C++, Python, Web design
           <br><br>
