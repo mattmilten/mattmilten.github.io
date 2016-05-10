@@ -28,4 +28,9 @@ fi
 echo "syncing..."
 $COPY $COPYFLAGS --exclude=.git  --exclude=.gitignore --exclude=export-www.sh --exclude-from=.gitignore . $WWWDIR
 
+if [ "$1" == "test" ]
+then
+   echo "check test page here: www.zib.de/miltenberger/test/miltenberger"
+fi
+
 exit
