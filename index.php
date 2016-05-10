@@ -1,298 +1,334 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans|Josefin+Slab' rel='stylesheet' type='text/css'>
-   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-   <!--   load css styles -->
-   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="bootstrap/css/custom.css">
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="bootstrap/js/jquery.js"></script>
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-   <script src="bootstrap/js/bootstrap.min.js"></script>
-   <title>Matthias Miltenberger</title>
-<!--<?php
-$filename= "counter_en.txt";
-$fd = fopen ($filename , "r");
-$fstring = fread ($fd , filesize ($filename));
-fclose($fd);
-$fd = fopen ($filename , "w");
-$fcounted = $fstring + 1;
-$fout= fwrite ($fd , $fcounted );
-fclose($fd);
-?>-->
-</head>
-<body>
-<!--<?php include ('banner.inc')?>-->
-   <div class="container bs-docs-container">
-      <div class="row">
-         <div class="col-md-12">
-            <?php include ('english.inc')?>
-         </div>
-         <!-- end col-md-12 -->
-      </div>
-      <!-- end row -->
-   </div>
-   <!-- end container -->
-   <footer class="bs-footer" role="contentinfo">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="personal web page">
+    <meta name="author" content="Matthias Miltenberger">
+    <link rel="icon" href="../favicon.ico">
+
+    <title>Matthias Miltenberger</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <?php include('footer.inc'); ?>
-            </div>
-         </div>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Matthias Miltenberger</a>
+        </div>
       </div>
-   </footer>
-</body>
+    </nav>
 
-<!--
+    <div class="container">
 
+      <hr>
 
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <h2>About<br><small>Mathematician and Software Engineer</small></h2>
+          <strong>Interests include:</strong><br>Optimization, C/C++, Python, Web design
+          <br><br>
+          <div class="row">
+            <div class="col-xs-1">
+              <a href="https://twitter.com/MattMilten">
+              <img class="img-logo img-thumbnail" src="twitter-icon.jpg" alt="Twitter"></a>
+            </div>
+            <!--<div class="col-xs-2">
+              <a href="https://www.facebook.com/matthias.miltenberger">
+              <img class="img-logo img-thumbnail" src="facebook-icon.png" alt="Facebook"></a>
+            </div>-->
+            <div class="col-xs-1 col-xs-offset-1">
+              <a href="https://de.linkedin.com/in/matthias-miltenberger-70494a63">
+              <img class="img-logo img-thumbnail" src="linkedin-icon.png" alt="LinkedIn"></a>
+            </div>
+            <div class="col-xs-1 col-xs-offset-1">
+              <a href="https://stackoverflow.com/users/673271/mattmilten">
+              <img class="img-logo img-thumbnail" src="stackoverflow-icon.png" alt="Stack Overflow"></a>
+            </div>
+            <div class="col-xs-1 col-xs-offset-1">
+              <a href="https://github.com/mattmilten">
+              <img class="img-logo img-thumbnail" src="github-icon.png" alt="GitHub"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-3">
+          <img class="img-profile" src="miltenberger.jpg" alt="picture">
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <h2>Contact</h2>
+          <address>
+            <a href="http://www.zib.de"><strong>Zuse Institute Berlin (ZIB)</strong></a><br>
+            Takustra&szlig;e 7<br>
+            14195 Berlin (Germany)<br>
+          </address>
+          <address>
+            Phone:  +49 30 84185 245<br>
+            e-Mail: miltenberger<img src="klammeraffe.gif" align="top" border="0" alt="at">zib.de<br>
+          </address>
+        </div>
+      </div>
 
+      <hr>
 
-   <table width="100%">
-   <tr>
-      <td colspan="3" align="right"><a href="index.de.php">Deutsch</a></td>
-   </tr>
-   <tr>
-         <td colspan="3"><div class="col1">
-         Matthias Miltenberger
-   </div></td>
-   </tr>
-   <tr>
-   <td height="15px"></td>
-   </tr>
-   <tr>
-   <td>
-      <table>
-      <tr>
-      <td colspan="2"><a href="http://www.zib.de">Zuse Institute Berlin (ZIB)</a></td>
-      </tr>
-      <tr>
-      <td colspan="2">Takustra&szlig;e 7</td>
-      </tr>
-      <tr>
-      <td colspan="2">14195 Berlin (Germany)</td>
-      </tr>
-      </table>
-   </td>
-   <td rowspan="2" align="right">
-         <img height="180" src="miltenberger.jpg" alt="picture">
-   </td>
-   </tr>
-   <tr>
-   <td>
-      <table>
-      <tr>
-      <td width="40%">Room:</td>
-      <td>3307</td>
-      </tr>
-      <tr>
-      <td>Phone:</td>
-      <td>+49 30 84185-245</td>
-      </tr>
-      <tr>
-      <td>Fax:</td>
-      <td>+49 30 84185-269</td>
-      </tr>
-      <tr>
-      <td>Email:</td>
-      <td align="left">miltenberger<img src="klammeraffe.gif" align="top" border="0" alt="at">zib.de</td>
-      </tr>
-      </table>
-   </td>
-   </tr>
-   <tr>
-   <td colspan="2" height="23px" valign="bottom"><div class="col1"></div></td>
-   </tr>
-   </table>
-
-   <h1 class="col3">Projects and current work</h1>
-      <ul>
-      <li><p>
-      <a href="http://www.zib.de/projects/development-new-linear-and-integer-programming-techniques-solve-supply-chain-management-problems">Advanced Solver Technology for Supply Chain Management</a> (cooperation with <a href="http://www.sap.com/germany/index.epx">SAP</a>)
-      </p></li>
-      <li><p>
-      Administration of the version control system <a href="http://git-scm.com/">Git</a> for the department optimization at <a href="http://www.zib.de">ZIB</a>
-      </p></li>
-      <li><p>
-      Maintenance and development of the LP solver <a href="http://soplex.zib.de">SoPlex</a>
-      </p></li>
-      <li><p>
-      Web design for the <a href="http://scip.zib.de">SCIP Optimization Suite</a>
-      </p></li>
-      </ul>
-
-   <h1 class="col3">Short Academic CV</h1>
-      <table width="100%" cellpadding="4">
-   <tr>
-      <td width="170px">10/2004 - 12/2009</td>
-   <td><a href="http://www.tu-berlin.de/menue/home/parameter/en/">
-         Technische Universit&auml;t Berlin</a>:
-            Studies of Mathematics with minor in Computer Science</td>
-      <td align="right" rowspan="2"><a href="http://www.tu-berlin.de/menue/home/parameter/en/">
-         <img src="logo_tu_red.jpg" width="50pt" border="0" alt="TU Berlin"></a></td>
-   </tr>
-   <tr>
-      <td>12/2009</td>
-   <td>Diploma in Mathematics with minor in Computer Science, supervised by
-            <a href="http://www.math.tu-berlin.de/~mehrmann/">Prof. Dr. Volker Mehrmann</a></td>
-   </tr>
-   <tr>
-   <td>05/2009 - 03/2010</td>
-   <td><a href="http://www.tu-berlin.de/menue/home/parameter/en/">
-         Technische Universit&auml;t Berlin</a>:
+      <div class="row">
+        <h2>Short Academic CV</h2>
+        <div class="row vertical-align">
+          <div class="col-xs-2 text-right">
+            since 07/2010
+          </div>
+          <div class="col-xs-2 col-sm-1">
+            <a href="http://www.zib.de">
+            <img class="img-responsive img-padding" src="logo_zib_quad.jpg" alt="ZIB"></a>
+          </div>
+          <div class="col-xs-9">
+            <a href="http://www.zib.de/members/miltenberger">
+              Zuse Institute Berlin (ZIB)</a>:
+              Research assistant, Department Mathematical Optimization
+          </div>
+        </div>
+        <div class="row vertical-align">
+          <div class="col-xs-2 text-right">
+            05/2009 - 03/2010
+          </div>
+          <div class="col-xs-2 col-sm-1">
+            <a href="http://www.matheon.de/">
+            <img class="img-responsive img-padding" src="logo_matheon.gif" alt="Matheon"></a>
+          </div>
+          <div class="col-xs-9">
+            <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
+            Technische Universit&auml;t Berlin</a>:
             Student assistant,
             <a href="http://www.matheon.de/" style="font-variant:small-caps">Matheon</a> Project
             <a href="http://www.matheon.de/research/show_project.asp?id=172"> C29</a>
-      </td>
-      <td align="right"><a href="http://www.matheon.de/">
-         <img src="logo_matheon.gif" width="50pt" border="0" alt="Matheon"></a></td>
-   </tr>
-   <tr>
-      <td>since 07/2010</td>
-      <td><a href="http://www.zib.de">
-         Zuse Institute Berlin (ZIB)</a>:
-         Research assistant, Department Optimization</td>
-      <td align="right"><a href="http://www.zib.de">
-         <img src="logo_zib_quad.jpg" width="50pt" border="0" alt="ZIB"></a></td>
-   </tr>
-   </table>
-   <h1 class="col3">Publications</h1>
-   <ul>
-      <li>
-      <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
-      Progress in Presolving for Mixed Integer Programming</a>
-      </b>
-      <br>
-      <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
-      <br>
-      ZIB-Report, 2013
-      </li>
-   </ul>
-   <ul>
-      <li>
-   <b><a href="miltenberger_diplomarbeit.pdf">
-      Die IDR(s)-Methode zur L&ouml;sung von parametrisierten Gleichungssystemen</a>
-   </b>
-   <br>
-   <em>Matthias Miltenberger</em>
-   <br>
-      Diploma Thesis, <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
-      Technische Universit&auml;t Berlin</a>, 2009
-      </li>
-   </ul>
-   <h1 class="col3">Scientific Talks</h1>
-   
-      <ul><li>
-      <b>SCIP Optimization Suite 3.1</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://www.or2014.de"> OR 2014</a>, RWTH Aachen
-      </li></ul>
+          </div>
+        </div>
+        <div class="row vertical-align">
+          <div class="col-xs-2 text-right">
+            <div class="row">
+              <div class="col-xs-12">12/2009</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">12/2004 - 12/2009</div>
+            </div>
+          </div>
+          <div class="col-xs-2 col-sm-1">
+            <a href="http://www.tu-berlin.de/">
+            <img class="img-responsive img-padding" src="logo_tu_red.jpg" alt="TU Berlin"></a>
+          </div>
+          <div class="col-xs-9">
+            <div class="row">
+              <div class="col-xs-12">
+              Diploma in Mathematics with minor in Computer Science, supervised
+              by <a href="http://www.math.tu-berlin.de/~mehrmann/">Prof. Mehrmann</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+              <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
+              Technische Universit&auml;t Berlin</a>:
+              Studies of Mathematics with minor in Computer Science
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <ul><li>
-      <b>SoPlex 2.0</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://www.ifors2014.org/"> IFORS 2014</a>, Centre de Convencions Internacional de Barcelona
-      </li></ul>
-      
-      <ul><li>
-      <b>Sequential Linear Programming with SoPlex</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://europt2014.univ-perp.fr/"> 12th EUROPT Workshop on Advances in Continuous Optimization 2014</a>, Université de Perpignan Via Domitia
-      </li></ul>
-      
-      <ul><li>
-      <b>Lecture</b>
-      <br>
-      Matthias Miltenberger, Gerald Gamrath
-      <br>
-      <a href="http://vie.math.ac.vn/learning/index.php?option=com_content&view=article&id=337:trng-thu-qnumerical-mathematics-and-optimizationqti-vin-toan-hc-07102013-2510201352013&catid=39:cao-hoc-quoc-te&Itemid=93"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
-      </li></ul>
-      
-      <ul><li>
-      <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
-      <br>
-      Matthias Miltenberger, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
-      <br>
-      <a href="http://www.eur.nl/ese/english/departments/department_of_econometrics/or2013/home/"> OR 2013</a>, Erasmus Universiteit Rotterdam
-      </li></ul>
-      <ul><li>
+      <hr>
 
-      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
-      </li></ul>
-      
-      <ul><li>
-      <b>Challenges in Linear Programming and how SoPlex deals with them</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://eventos.fct.unl.pt/iccopt2013/pages/home"> ICCOPT 2013</a>, FCT Universidade Nova de Lisboa
-      </li></ul>
-      
-      <ul><li>
-      <b>Advances in Linear Programming</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
-      </li></ul>
-      
-      <ul><li>
-      <b>The SCIP Optimization Suite 3.0 - It's all in the bag!</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://www.or2012.de/"> OR 2012</a>, Leibniz Universit&auml;t Hannover
-      </li></ul>
-      
-      <ul><li>
-      <b>Advances in Linear Programming</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://ismp2012.mathopt.org/"> ISMP 2012</a>, TU Berlin
-      </li></ul>
-      
-      <ul><li>
-      <b>Solving large-scale Linear Programming Problems</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://www.apmod.org/"> APMOD 2012</a>, Paderborn
-      </li></ul>
-      
-      <ul><li>
-      <b>Large-scale LP solving</b>
-      </li>
-      <li>
-      <b>The IDR method for solving large nonsymmetric parameterized linear systems</b>
-      <br>
-      Matthias Miltenberger
-      <br>
-      <a href="http://meetings2.informs.org/charlotte2011/index.php"> INFORMS 2011</a>, Charlotte, North Carolina
-      </li></ul>
-      
-      <ul><li>
-      <b>Sudoku vs. Graphenf&auml;rbung: Wenn alles verschieden sein muss</b>
-      <br>
-      Matthias Miltenberger, Timo Berthold
-      <br>
-      <a href="http://www.matheon.de/schools/mathinside/"> MathInside 2011</a>, Urania, Berlin
-      </li></ul>
+      <div class="row">
+        <h2>Publications</h2>
+        <ul>
+        <li>
+          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/5771">
+          Methoden zur Reduktion der Rechenzeit linearer Optimierungsmodelle in der Energiewirtschaft - Eine Performance-Analyse</a>
+          </b>
+          <br>
+          <em> Karl-Kiên Cao, Ambros Gleixner, Matthias Miltenberger </em>
+          <br>
+          in Proceedings, EnInnov 2016
+        </li>
+        <li>
+          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/5767">
+          The SCIP Optimization Suite 3.2</a>
+          </b>
+          <br>
+          <em> Gerald Gamrath, Tobias Fischer, Tristan Gally, Ambros M. Gleixner, Gregor Hendel, Thorsten Koch, Stephen J. Maher, Matthias Miltenberger, Benjamin Müller, Marc E. Pfetsch, Christian Puchert, Daniel Rehfeldt, Sebastian Schenker, Robert Schwarz, Felipe Serrano, Yuji Shinano, Stefan Vigerske, Dieter Weninger, Michael Winkler, Jonas T. Witt, Jakob Witzig </em>
+          <br>
+          ZIB-Report, 2016
+        </li>
+        <li>
+          <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
+          Progress in Presolving for Mixed Integer Programming</a>
+          </b>
+          <br>
+          <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
+          <br>
+          ZIB-Report, 2013
+        </li>
+        <li>
+          <b><a href="miltenberger_diplomarbeit.pdf">
+          Die IDR(s)-Methode zur L&ouml;sung von parametrisierten Gleichungssystemen</a></b>
+          <br>
+          <em>Matthias Miltenberger</em>
+          <br>
+          Diploma Thesis, <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
+          Technische Universit&auml;t Berlin</a>, 2009
+        </li>
+        </ul>
+      </div>
 
-      <div class="col2">last modified: <?php echo date("d.m.Y",filectime("index.de.php")); ?> </div>
-</body>-->
+      <hr>
+
+      <div class="row">
+        <h2>Scientific Talks</h2>
+        <ul>
+
+          <li>
+          <b>The Impact of Linear Programming on the Performance of SCIP</b>
+          <br>
+          Thorsten Koch, Matthias Miltenberger
+          <br>
+          <a href="https://or2015.univie.ac.at/"> OR 2015</a>, Universität Wien
+          </li>
+
+          <li>
+          <b>The Impact of Linear Programming on the Performance of SCIP</b>
+          <br>
+          Thorsten Koch, Matthias Miltenberger
+          <br>
+          <a href="http://www.ismp2015.org/"> ISMP 2015</a>, Pittsburgh
+          </li>
+
+          <li>
+          <b>SCIP Optimization Suite 3.1</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.or2014.de"> OR 2014</a>, RWTH Aachen
+          </li>
+
+          <li>
+          <b>SoPlex 2.0</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.ifors2014.org/"> IFORS 2014</a>, Centre de Convencions Internacional de Barcelona
+          </li>
+
+          <li>
+          <b>Sequential Linear Programming with SoPlex</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://europt2014.univ-perp.fr/"> 12th EUROPT Workshop on Advances in Continuous Optimization 2014</a>, Université de Perpignan Via Domitia
+          </li>
+
+          <li>
+          <b>Lecture</b>
+          <br>
+          Matthias Miltenberger, Gerald Gamrath
+          <br>
+          <a href="http://vie.math.ac.vn/learning/index.php?option=com_content&view=article&id=337:trng-thu-qnumerical-mathematics-and-optimizationqti-vin-toan-hc-07102013-2510201352013&catid=39:cao-hoc-quoc-te&Itemid=93"> Fall School on "Numerical Mathematics and Optimization"</a>, Hanoi, Institute of Mathematics, VAST
+          </li>
+
+          <li>
+          <b>Solving Challenging Supply Chain Management Problems with the SCIP Optimization Suite</b>
+          <br>
+          Matthias Miltenberger, Gerald Gamrath, Thorsten Koch, Alexander Martin, Dieter Weninger
+          <br>
+          <a href="http://www.eur.nl/ese/english/departments/department_of_econometrics/or2013/home/"> OR 2013</a>, Erasmus Universiteit Rotterdam
+          </li>
+          <li>
+
+          <b>Challenges in Linear Programming and how SoPlex deals with them</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
+          </li>
+
+          <li>
+          <b>Challenges in Linear Programming and how SoPlex deals with them</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://eventos.fct.unl.pt/iccopt2013/pages/home"> ICCOPT 2013</a>, FCT Universidade Nova de Lisboa
+          </li>
+
+          <li>
+          <b>Advances in Linear Programming</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
+          </li>
+
+          <li>
+          <b>The SCIP Optimization Suite 3.0 - It's all in the bag!</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.or2012.de/"> OR 2012</a>, Leibniz Universit&auml;t Hannover
+          </li>
+
+          <li>
+          <b>Advances in Linear Programming</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://ismp2012.mathopt.org/"> ISMP 2012</a>, TU Berlin
+          </li>
+
+          <li>
+          <b>Solving large-scale Linear Programming Problems</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.apmod.org/"> APMOD 2012</a>, Paderborn
+          </li>
+
+          <li>
+          <b>Large-scale LP solving</b> and <b>The IDR method for solving large nonsymmetric parameterized linear systems</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://meetings2.informs.org/charlotte2011/index.php"> INFORMS 2011</a>, Charlotte, North Carolina
+          </li>
+
+          <li>
+          <b>Sudoku vs. Graphenf&auml;rbung: Wenn alles verschieden sein muss</b>
+          <br>
+          Matthias Miltenberger, Timo Berthold
+          <br>
+          <a href="http://www.matheon.de/schools/mathinside/"> MathInside 2011</a>, Urania, Berlin
+          </li>
+
+      </div>
+    </div> <!-- /container -->
+
+    <footer>
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        &copy; <?php echo date("Y", time())?> Matthias Miltenberger, designed with <a href="http://getbootstrap.com">Bootstrap</a>
+      </div>
+    </div>
+    </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
 </html>
