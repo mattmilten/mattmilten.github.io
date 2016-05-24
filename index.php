@@ -8,6 +8,8 @@
     <meta name="description" content="personal web page">
     <meta name="author" content="Matthias Miltenberger">
     <link rel="icon" href="../favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
     <title>Matthias Miltenberger</title>
 
