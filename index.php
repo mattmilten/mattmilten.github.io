@@ -60,6 +60,10 @@
               <a href="https://github.com/mattmilten">
               <img class="img-logo img-thumbnail" src="github-icon.png" alt="GitHub"></a>
             </div>
+            <div class="col-xs-1 col-xs-offset-1">
+              <a href="https://www.researchgate.net/profile/Matthias_Miltenberger">
+              <img class="img-logo img-thumbnail" src="researchgate-icon.png" alt="ResearchGate"></a>
+            </div>
           </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-3">
