@@ -199,6 +199,22 @@
         <ul>
 
           <li>
+          <b><a href="ICCOPT_2016_Solution_Polishing.pdf">LP Solution Polishing to improve MIP Performance</a></b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="http://www.iccopt2016.tokyo/"> ICCOPT 2016</a>, Tokyo
+          </li>
+
+          <li>
+          <b><a href="ICMS_2016_PySCIPOpt.slides.html">PySCIPOpt: Mathematical Programming in Python with SCIP</a></b>
+          <br>
+          Stephen Maher, Matthias Miltenberger, Joao Pedro Pedroso, Daniel Rehfeldt, Robert Schwarz, Felipe Serrano
+          <br>
+          <a href="http://icms2016.zib.de/"> ICMS 2016</a>, Zuse Institute Berlin
+          </li>
+
+          <li>
           <b>The Impact of Linear Programming on the Performance of SCIP</b>
           <br>
           Thorsten Koch, Matthias Miltenberger
