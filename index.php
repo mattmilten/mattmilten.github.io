@@ -272,7 +272,6 @@
           <br>
           <a href="http://www.eur.nl/ese/english/departments/department_of_econometrics/or2013/home/"> OR 2013</a>, Erasmus Universiteit Rotterdam
           </li>
-          <li>
 
           <li>
           <b>Challenges in Linear Programming and how SoPlex deals with them</b>
