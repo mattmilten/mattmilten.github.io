@@ -154,6 +154,15 @@
         <h2>Publications</h2>
         <ul>
         <li>
+          <b><a href="https://link.springer.com/chapter/10.1007%2F978-3-319-42432-3_37">
+          PySCIPOpt: Mathematical Programming in Python with the SCIP Optimization Suite</a>
+          </b>
+          <br>
+          <em> Stephen Maher, Matthias Miltenberger, João Pedro Pedroso, Daniel Rehfeldt, Robert Schwarz, Felipe Serrano </em>
+          <br>
+          Book Chapter (<a href="https://link.springer.com/book/10.1007/978-3-319-42432-3">Mathematical Software – ICMS 2016</a>)
+        </li>
+        <li>
           <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/5771">
           Methoden zur Reduktion der Rechenzeit linearer Optimierungsmodelle in der Energiewirtschaft - Eine Performance-Analyse</a>
           </b>
@@ -219,15 +228,9 @@
           <br>
           Thorsten Koch, Matthias Miltenberger
           <br>
-          <a href="https://or2015.univie.ac.at/"> OR 2015</a>, Universität Wien
-          </li>
-
-          <li>
-          <b>The Impact of Linear Programming on the Performance of SCIP</b>
-          <br>
-          Thorsten Koch, Matthias Miltenberger
-          <br>
           <a href="http://www.ismp2015.org/"> ISMP 2015</a>, Pittsburgh
+          <br>
+          <a href="https://or2015.univie.ac.at/"> OR 2015</a>, Universität Wien
           </li>
 
           <li>
@@ -271,27 +274,14 @@
           </li>
           <li>
 
-          <b>Challenges in Linear Programming and how SoPlex deals with them</b>
-          <br>
-          Matthias Miltenberger
-          <br>
-          <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
-          </li>
-
           <li>
           <b>Challenges in Linear Programming and how SoPlex deals with them</b>
           <br>
           Matthias Miltenberger
           <br>
           <a href="http://eventos.fct.unl.pt/iccopt2013/pages/home"> ICCOPT 2013</a>, FCT Universidade Nova de Lisboa
-          </li>
-
-          <li>
-          <b>Advances in Linear Programming</b>
           <br>
-          Matthias Miltenberger
-          <br>
-          <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
+          <a href="http://www.or.rwth-aachen.de/frico/index.html"> FRICO 2013</a>, RWTH Aachen
           </li>
 
           <li>
@@ -308,6 +298,8 @@
           Matthias Miltenberger
           <br>
           <a href="http://ismp2012.mathopt.org/"> ISMP 2012</a>, TU Berlin
+          <br>
+          <a href="http://online.ima.org.uk/events.aspx"> 3rd IMA Conference on Numerical Linear Algebra and Optimisation</a>, University of Birmingham
           </li>
 
           <li>
