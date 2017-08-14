@@ -154,6 +154,16 @@
         <h2>Publications</h2>
         <ul>
         <li>
+          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/6464">
+          Exploring the Numerics of Branch-and-Cut for Mixed Integer Linear Optimization
+          </a>
+          </b>
+          <br>
+          <em> Matthias Miltenberger, Ted K. Ralphs, Daniel Steffy </em>
+          <br>
+          ZIB-Report, 2017
+        </li>
+        <li>
           <b><a href="https://link.springer.com/chapter/10.1007%2F978-3-319-42432-3_37">
           PySCIPOpt: Mathematical Programming in Python with the SCIP Optimization Suite</a>
           </b>
