@@ -218,7 +218,7 @@
         <ul>
 
           <li>
-          <b><a href="OR2017_Numerics-in-MIP.pdf">Exploring Numerics in Branch-and-Cut Solvers</a></b>
+          <b><a href="OR2017_Numerics-in-MIP.pdf">Exploring Numerics in Branch-and-Cut Solvers for Mixed Integer Linear Optimization</a></b>
           <br>
           Matthias Miltenberger, Ted Ralphs, Daniel E. Steffy
           <br>
