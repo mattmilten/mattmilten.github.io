@@ -218,6 +218,14 @@
         <ul>
 
           <li>
+          <b><a href="OR2017_Numerics-in-MIP.pdf">Exploring Numerics in Branch-and-Cut Solvers</a></b>
+          <br>
+          Matthias Miltenberger, Ted Ralphs, Daniel E. Steffy
+          <br>
+          <a href="http://www.or2017.de/">OR 2017</a>, Berlin
+          </li>
+
+          <li>
           <b><a href="ICCOPT_2016_Solution_Polishing.pdf">LP Solution Polishing to improve MIP Performance</a></b>
           <br>
           Matthias Miltenberger
