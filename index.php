@@ -62,7 +62,7 @@
             </div>
             <div class="col-xs-2">
               <a href="https://www.researchgate.net/profile/Matthias_Miltenberger">
-              <img class="img-logo img-thumbnail" src="researchgate-icon.png" alt="ResearchGate"></a>
+              <img class="img-thumbnail" src="researchgate-icon.png" alt="ResearchGate"></a>
             </div>
           </div>
         </div>
