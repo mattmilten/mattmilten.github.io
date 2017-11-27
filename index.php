@@ -40,27 +40,27 @@
           <strong>Interests include:</strong><br>Optimization, C/C++, Python, Web design
           <br><br>
           <div class="row">
-            <div class="col-xs-1">
+            <div class="col-xs-2">
               <a href="https://twitter.com/MattMilten">
-              <img class="img-logo img-thumbnail" src="twitter.svg" alt="Twitter"></a>
+              <img class="img-thumbnail" src="twitter.svg" alt="Twitter"></a>
             </div>
             <!--<div class="col-xs-2">
               <a href="https://www.facebook.com/matthias.miltenberger">
-              <img class="img-logo img-thumbnail" src="facebook-icon.png" alt="Facebook"></a>
+              <img class="img-thumbnail" src="facebook.svg" alt="Facebook"></a>
             </div>-->
-            <div class="col-xs-1 col-xs-offset-1">
+            <div class="col-xs-2">
               <a href="https://de.linkedin.com/in/matthias-miltenberger-70494a63">
-              <img src="linkedin.svg" alt="LinkedIn"></a>
+              <img class="img-thumbnail" src="linkedin.svg" alt="LinkedIn"></a>
             </div>
-            <div class="col-xs-1 col-xs-offset-1">
+            <div class="col-xs-2">
               <a href="https://stackoverflow.com/users/673271/mattmilten">
-              <img class="img-logo" src="stackoverflow.svg" alt="Stack Overflow"></a>
+              <img class="img-thumbnail" src="stackoverflow.svg" alt="Stack Overflow"></a>
             </div>
-            <div class="col-xs-1 col-xs-offset-1">
+            <div class="col-xs-2">
               <a href="https://github.com/mattmilten">
               <img class="img-thumbnail" src="github.svg" alt="GitHub"></a>
             </div>
-            <div class="col-xs-1 col-xs-offset-1">
+            <div class="col-xs-2">
               <a href="https://www.researchgate.net/profile/Matthias_Miltenberger">
               <img class="img-logo img-thumbnail" src="researchgate-icon.png" alt="ResearchGate"></a>
             </div>
