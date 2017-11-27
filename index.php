@@ -151,64 +151,7 @@
       <hr>
 
       <div class="row">
-        <h2>Publications</h2>
-        <ul>
-        <li>
-          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/6464">
-          Exploring the Numerics of Branch-and-Cut for Mixed Integer Linear Optimization
-          </a>
-          </b>
-          <br>
-          <em> Matthias Miltenberger, Ted K. Ralphs, Daniel Steffy </em>
-          <br>
-          ZIB-Report, 2017
-        </li>
-        <li>
-          <b><a href="https://link.springer.com/chapter/10.1007%2F978-3-319-42432-3_37">
-          PySCIPOpt: Mathematical Programming in Python with the SCIP Optimization Suite</a>
-          </b>
-          <br>
-          <em> Stephen Maher, Matthias Miltenberger, João Pedro Pedroso, Daniel Rehfeldt, Robert Schwarz, Felipe Serrano </em>
-          <br>
-          Book Chapter (<a href="https://link.springer.com/book/10.1007/978-3-319-42432-3">Mathematical Software – ICMS 2016</a>)
-        </li>
-        <li>
-          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/5771">
-          Methoden zur Reduktion der Rechenzeit linearer Optimierungsmodelle in der Energiewirtschaft - Eine Performance-Analyse</a>
-          </b>
-          <br>
-          <em> Karl-Kiên Cao, Ambros Gleixner, Matthias Miltenberger </em>
-          <br>
-          in Proceedings, EnInnov 2016
-        </li>
-        <li>
-          <b><a href="https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/5767">
-          The SCIP Optimization Suite 3.2</a>
-          </b>
-          <br>
-          <em> Gerald Gamrath, Tobias Fischer, Tristan Gally, Ambros M. Gleixner, Gregor Hendel, Thorsten Koch, Stephen J. Maher, Matthias Miltenberger, Benjamin Müller, Marc E. Pfetsch, Christian Puchert, Daniel Rehfeldt, Sebastian Schenker, Robert Schwarz, Felipe Serrano, Yuji Shinano, Stefan Vigerske, Dieter Weninger, Michael Winkler, Jonas T. Witt, Jakob Witzig </em>
-          <br>
-          ZIB-Report, 2016
-        </li>
-        <li>
-          <b><a href="http://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/4253">
-          Progress in Presolving for Mixed Integer Programming</a>
-          </b>
-          <br>
-          <em> Gerald Gamrath, Thorsten Koch, Alexander Martin, Matthias Miltenberger, Dieter Weninger </em>
-          <br>
-          ZIB-Report, 2013
-        </li>
-        <li>
-          <b><a href="miltenberger_diplomarbeit.pdf">
-          Die IDR(s)-Methode zur L&ouml;sung von parametrisierten Gleichungssystemen</a></b>
-          <br>
-          <em>Matthias Miltenberger</em>
-          <br>
-          Diploma Thesis, <a href="http://www.tu-berlin.de/menue/home/parameter/en/">
-          Technische Universit&auml;t Berlin</a>, 2009
-        </li>
-        </ul>
+        <h2><a href="https://www.zib.de/members/miltenberger">Publications</a></h2>
       </div>
 
       <hr>
