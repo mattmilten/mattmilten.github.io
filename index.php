@@ -50,15 +50,15 @@
             </div>-->
             <div class="col-xs-1 col-xs-offset-1">
               <a href="https://de.linkedin.com/in/matthias-miltenberger-70494a63">
-              <img class="img-logo img-thumbnail" src="linkedin.svg" alt="LinkedIn"></a>
+              <img src="linkedin.svg" alt="LinkedIn"></a>
             </div>
             <div class="col-xs-1 col-xs-offset-1">
               <a href="https://stackoverflow.com/users/673271/mattmilten">
-              <img class="img-logo img-thumbnail" src="stackoverflow.svg" alt="Stack Overflow"></a>
+              <img class="img-logo" src="stackoverflow.svg" alt="Stack Overflow"></a>
             </div>
             <div class="col-xs-1 col-xs-offset-1">
               <a href="https://github.com/mattmilten">
-              <img class="img-logo img-thumbnail" src="github.svg" alt="GitHub"></a>
+              <img class="img-thumbnail" src="github.svg" alt="GitHub"></a>
             </div>
             <div class="col-xs-1 col-xs-offset-1">
               <a href="https://www.researchgate.net/profile/Matthias_Miltenberger">
