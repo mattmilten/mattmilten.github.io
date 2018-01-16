@@ -66,7 +66,7 @@
             </div>
             <div class="col-xs-2">
               <a href="https://orcid.org/0000-0002-0784-0964">
-              <img class="img-thumbnail" src="orcid-logo.gif" alt="ORCID"></a>
+              <img class="img-thumbnail" src="orcid_logo.gif" alt="ORCID"></a>
             </div>
           </div>
         </div>
