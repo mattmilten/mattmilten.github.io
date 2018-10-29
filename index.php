@@ -155,14 +155,21 @@
       <hr>
 
       <div class="row">
-        <h2><a href="https://www.zib.de/members/miltenberger">Publications</a></h2>
+        <h2><a href="https://www.zib.de/members/miltenberger#block-zib-opus-publist-zib-opus-publist">Publications</a></h2>
       </div>
 
       <hr>
 
       <div class="row">
-        <h2>Scientific Talks</h2>
+        <h2>Scientific Talks, Conferences and Workshops</h2>
         <ul>
+
+          <li>
+          <b><a href="https://www.cbs.dk/en/research/departments-and-centres/department-of-economics/events/d3emo-modeling-week">
+          D3EMO: Modeling Week on Data Driven Decision Making and Optimization</a></b>
+          <br>
+          Copenhagen Business School
+          </li>
 
           <li>
           <b><a href="OR2017_Numerics-in-MIP.pdf">Exploring Numerics in Branch-and-Cut Solvers for Mixed Integer Linear Optimization</a></b>
