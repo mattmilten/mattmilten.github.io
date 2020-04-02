@@ -165,6 +165,22 @@
         <ul>
 
           <li>
+          <b><a href="https://de-rse.org/en/conf2019/talk/MDKJ9D/">Develop, License, Test, Curate - Mathematical Optimization In The Real World</a></b>
+          <br>
+          Matthias Miltenberger, Franziska Schlösser
+          <br>
+          <a href="https://de-rse.org/en/conf2019/">deRSE 2019</a>, Potsdam
+          </li>
+
+          <li>
+          <b>Mathematische Optimierung – Mit Code die Welt verbessern</b>
+          <br>
+          Matthias Miltenberger
+          <br>
+          <a href="https://www.matheon.de/schools/mathInsideProgram">MathInside 2019</a>, Berlin
+          </li>
+
+          <li>
           <b><a href="https://www.cbs.dk/en/research/departments-and-centres/department-of-economics/events/d3emo-modeling-week">
           D3EMO: Modeling Week on Data Driven Decision Making and Optimization</a></b>
           <br>
