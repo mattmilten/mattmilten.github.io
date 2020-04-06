@@ -161,6 +161,8 @@
       <hr>
 
       <div class="row">
+        <h2><a href="https://www.zib.de/miltenberger/treed-showcase.html">TreeD Showcase</a></h2>
+
         <h2>Scientific Talks, Conferences and Workshops</h2>
         <ul>
 
