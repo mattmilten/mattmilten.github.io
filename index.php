@@ -93,6 +93,20 @@
         <h2>Short Academic CV</h2>
         <div class="row vertical-align">
           <div class="col-xs-2 text-right">
+            since 10/2019
+          </div>
+          <div class="col-xs-2 col-sm-1">
+            <a href="https://www.gurobi.com">
+            <img class="img-responsive img-padding" src="logo_gurobi.png" alt="ZIB"></a>
+          </div>
+          <div class="col-xs-9">
+            <a href="https://www.gurobi.com/company/our-team/">
+              Gurobi</a>:
+              Optimization Support Engineer
+          </div>
+        </div>
+        <div class="row vertical-align">
+          <div class="col-xs-2 text-right">
             since 07/2010
           </div>
           <div class="col-xs-2 col-sm-1">
