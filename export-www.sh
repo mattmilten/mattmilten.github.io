@@ -1,10 +1,10 @@
 #!/bin/bash
 
-WWWDIR=$USER@opts1.zib.de:/www/Abt-Optimization/Personal/miltenberger
+WWWDIR=$USER@login1.zib.de:/www/Abt-Optimization/Personal/miltenberger
 
 if [ "$1" == "test" ]
 then
-    WWWDIR=$USER@opts1.zib.de:/www/Abt-Optimization/Personal/miltenberger/test/miltenberger
+    WWWDIR=$USER@login1.zib.de:/www/Abt-Optimization/Personal/miltenberger/test/miltenberger
 fi
 
 # rsync copies user file permission, better than cp
