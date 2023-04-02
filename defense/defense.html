@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="defense_files/libs/clipboard/clipboard.min.js"></script>
+<script src="defense_files/libs/quarto-html/tabby.min.js"></script>
+<script src="defense_files/libs/quarto-html/popper.min.js"></script>
+<script src="defense_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="defense_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="defense_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="defense_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="defense_files/libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="defense_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.335">
+
+  <meta name="author" content="Matthias Miltenberger">
+  <title>Linear Programming in MILP Solving</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="defense_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="defense_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="defense_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="defense_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="defense_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="defense_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="defense_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+          <script type="text/javascript">
+          window.PlotlyConfig = {MathJaxConfig: 'local'};
+          if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+          if (typeof require !== 'undefined') {
+          require.undef("plotly");
+          requirejs.config({
+              paths: {
+                  'plotly': ['https://cdn.plot.ly/plotly-2.18.2.min']
+              }
+          });
+          require(['plotly'], function(Plotly) {
+              window._Plotly = Plotly;
+          });
+          }
+          </script>
+          
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="images/ZIB.jpg" data-background-opacity="0.6" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Linear Programming in MILP Solving</h1>
+  <p class="subtitle">A Computational Perspective</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Matthias Miltenberger 
+</div>
+</div>
+</div>
+
+</section>
+<section id="once-upon-a-time" class="slide level2">
+<h2>Once upon a time…</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/Vienna1895_crop.jpg"></p>
+</div><div class="column" style="width:40%;">
+<p><br><br><br> … I set out to the exciting world of optimization!</p>
+<p><br></p>
+<p>From SCIP 2.0 to 7.0…</p>
+<p>… from SoPlex 1.5 to 5.0!</p>
+</div>
+</div>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scip-2.0-to-7.0-and-soplex-1.5-to-5.0" class="slide level2">
+<h2>SCIP 2.0 to 7.0 and SoPlex 1.5 to 5.0</h2>
+<ul>
+<li><span class="snsred"><strong>SoPlex:</strong></span>
+<ul>
+<li>bound flipping ratio test</li>
+<li>LP solution polishing</li>
+<li>improved row representation</li>
+<li>better sparsity exploitation</li>
+<li>increased numerical stability</li>
+</ul></li>
+<li><span class="snsblue"><strong>SCIP:</strong></span>
+<ul>
+<li>new LP interface to SoPlex</li>
+<li>persistent scaling</li>
+<li>TreeD visualization tool</li>
+<li>PySCIPOpt Python interface</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>bound flipping ratio test is an advanced Simplex component that was missing</li>
+<li>solution polishing is a feature for SCIP but implemented entirely in SoPlex</li>
+<li>row representation is available by default</li>
+<li>SoPlex runs more stable and can make better use of sparse problems</li>
+<li>new LP interface enables better communication between SCIP and SoPlex</li>
+<li>persistent scaling improves performance and stability</li>
+<li>TreeD is a novel visualization tool</li>
+<li>PySCIPOpt provides better usability and enables rapid prototyping</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section id="introduction-to-the-problem" class="title-slide slide level1 center">
+<h1>Introduction to the problem</h1>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="linear-programming" class="slide level2">
+<h2>Linear programming</h2>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+\begin{align}
+\max &amp;&amp; c^Tx &amp; \\
+\text{subject to} &amp;&amp; Ax &amp; \leq b \\
+&amp;&amp; x &amp;\geq 0 \\
+&amp;&amp; \phantom{x_j} &amp; \phantom{\in \mathbb{Z}, \forall j \in \mathcal{I}}
+\end{align}
+\]</span></p>
+</div>
+<div class="column" style="width:49%;">
+<ul>
+<li><span class="math inline">\(A\in\mathbb{R}^{m,n},\; b\in\mathbb{R}^m,\; c\in\mathbb{R}^n\)</span></li>
+<li>LP in canonical form</li>
+<li>two common ways to solve:</li>
+</ul>
+</div>
+</div>
+<div class="{columns}">
+<div class="column" style="width:49%;">
+<p>Simplex algorithm:</p>
+<img data-src="svg/simplex_LP.svg" style="width:10em">
+<div class="footnote">
+📑 Dantzig, 1947
+</div>
+</div>
+<div class="column" style="width:49%;">
+<p>Barrier method:</p>
+<img data-src="svg/barrier_LP.svg" style="width:10em">
+<div class="footnote">
+📑 Kamarkar, 1984
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>simplex walks from one vertex of the polyhedron towards the next</li>
+<li>barrier follows an interior path until it’s close enough to the optimal face</li>
+<li>vast simplification: needs simplex-like crossover to generate a vertex solution</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mixed-integer-linear-programming" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Mixed-integer linear programming</h2>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+\begin{align}
+\max &amp;&amp; c^Tx &amp; \\
+\text{subject to} &amp;&amp; Ax &amp; \leq b \\
+&amp;&amp; x &amp; \geq 0 \\
+&amp;&amp; \color{blue}{x_j} &amp; \color{blue}{\in \mathbb{Z}, \forall j \in \mathcal{I}}
+\end{align}
+\]</span></p>
+</div>
+<div class="column" style="width:49%;">
+<ul>
+<li>additional integrality constraints</li>
+<li>common way to solve: branch-and-cut</li>
+</ul>
+</div>
+</div>
+<div class="{columns}">
+<div class="column" style="width:40%;">
+<p>Branch-and-bound:</p>
+<img data-src="svg/mip.svg" style="width:10em">
+<div class="footnote">
+📑 Land and Doig, 1960
+</div>
+</div>
+<div class="column" style="width:49%;">
+
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>only the two main components of solvers</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mixed-integer-linear-programming-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Mixed-integer linear programming</h2>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+\begin{align}
+\max &amp;&amp; c^Tx &amp; \\
+\text{subject to} &amp;&amp; Ax &amp; \leq b \\
+&amp;&amp; x &amp; \geq 0 \\
+&amp;&amp; \color{RoyalBlue}{x_j} &amp; \color{RoyalBlue}{\in \mathbb{Z}, \forall j \in \mathcal{I}}
+\end{align}
+\]</span></p>
+</div>
+<div class="column" style="width:49%;">
+<ul>
+<li>additional integrality constraints</li>
+<li>common way to solve: branch-and-cut</li>
+</ul>
+</div>
+</div>
+<div class="{columns}">
+<div class="column" style="width:40%;">
+<p>Branch-and-bound:</p>
+<img data-src="svg/branch-and-bound.svg" style="width:10em">
+<div class="footnote">
+📑 Land and Doig, 1960
+</div>
+</div>
+<div class="column" style="width:49%;">
+<p>Cutting plane separation:</p>
+<img data-src="svg/cutting.svg" style="width:10em"> <img data-src="svg/cutting_zoom.svg" class="absolute" style="bottom: 160px; right: 10px; width: 10em; ">
+<div class="footnote">
+📑 Gomory, 1958
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>only the two main components of solvers</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="visualization-of-solving-process" class="slide level2">
+<h2>Visualization of solving process</h2>
+<!-- <iframe src="treed/Tree_2D_lseu_large.html" width=95% height=80%></iframe> -->
+<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="graphics/treed.mp4"></video>
+
+<aside class="notes">
+<ul>
+<li>branch-and-cut tree with node LP objective value as height value</li>
+<li>bounds moving closer together</li>
+<li>no new nodes outside the primal and dual bounds</li>
+<li>cut progress in the root can be seen</li>
+<li>makes it clear that this is an LP-based branch-and-cut algorithm</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>SCIP 7.0 solving the MIPLIB3 instance <code>lseu</code></p>
+</div></aside></section>
+<section id="scip-optimization-suite" class="slide level2">
+<h2>SCIP Optimization Suite</h2>
+<p><img data-src="images/skippy_logo_blue.png" class="absolute" style="top: 60px; right: 100px; width: 140px; "></p>
+<div class="r-stack">
+<p><img data-src="svg/scip_structure_32_wide.pdf.svg" height="600"></p>
+<p><img data-src="svg/scip_structure_32_wide_lp.pdf.svg" class="fragment" height="600"></p>
+</div>
+<aside class="notes">
+<ul>
+<li>SCIP provides more functionality beyond MILP solving</li>
+<li>MILP still substantial part of the code base</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="benchmark-sets-for-computational-experiments" class="slide level2">
+<h2>Benchmark sets for computational experiments</h2>
+<h3 id="lp-1336-instances">LP (1336 instances):</h3>
+<ul>
+<li>Netlib benchmark set<br> <span class="footnote"><a href="http://www.netlib.org/lp/" class="uri">http://www.netlib.org/lp/</a></span></li>
+<li>Csaba Mészáros’s LP collection<br> <span class="footnote"><a href="http://www.sztaki.hu/~meszaros/public_ftp/lptestset/" class="uri">http://www.sztaki.hu/~meszaros/public_ftp/lptestset/</a></span></li>
+<li>COR@L w/o integrality<br> <span class="footnote"><a href="http://coral.ie.lehigh.edu/data-sets/mixed-integer-instances/" class="uri">http://coral.ie.lehigh.edu/data-sets/mixed-integer-instances/</a></span></li>
+<li>MIPLIB<sup>1</sup>, MIPLIB 3<sup>2</sup>, MIPLIB 2003<sup>3</sup>, MIPLIB 2010<sup>4</sup>, and MIPLIB 2017<sup>5</sup> w/o integrality</li>
+</ul>
+<div class="fragment">
+<!-- -->
+<h3 id="milp-240-instances">MILP (240 instances):</h3>
+<ul>
+<li>MIPLIB 2017 benchmark set<br><span class="footnote"><a href="https://miplib.zib.de/" class="uri">https://miplib.zib.de/</a></span></li>
+</ul>
+</div>
+<div class="{columns}">
+<div class="column" style="width:49%;">
+<p><span class="footnote">📑 1: Bixby, Boyd, and Indovina, 1992</span><br> <span class="footnote">📑 2: Bixby, Ceria, et al., 1998</span><br> <span class="footnote">📑 3: Achterberg, Koch, and Martin, 2006</span></p>
+</div>
+<div class="column" style="width:50%;">
+<p><span class="footnote">📑 4: Koch, Achterberg, et al., 2011</span><br> <span class="footnote">📑 5: Gleixner, Hendel, et al., 2021</span><br></p>
+</div>
+</div>
+<p><img data-src="svg/lp-sizes.pdf.svg" class="absolute" style="top: 45px; right: 60px; width: 16em; "></p>
+<aside class="notes">
+<ul>
+<li>multiple random seeds to reduce noise and get more reliable results</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="soplex" class="title-slide slide level1 center">
+<h1>SoPlex</h1>
+<p>Spotlight on some selected features</p>
+<aside class="notes">
+<ul>
+<li>SoPlex is the default LP solver in SCIP and part of the SCIP Opt Suite</li>
+<li>implements the revised primal and dual simplex algorithm</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="row-representation" class="slide level2" data-auto-animate="true" data-auto-animate-unmatched="false">
+<h2 data-id="quarto-animate-title">Row representation</h2>
+<ul>
+<li>define the Simplex basis not as subset of columns but of rows</li>
+<li>basic rows are active constraints defining the current vertex</li>
+</ul>
+<!-- ![](svg/rowrep.svg) -->
+<div class="r-hstack">
+<p>A:</p>
+<div data-id="A" style="background: #eeeeee; border-style: solid; border-color: #000000; border-width: 4px; border-radius: 8px; width: 50px; height: 150px; margin-right: 80px; margin-left: 10px; margin-bottom: 20px">
+
+</div>
+<p>Basis:</p>
+<div data-id="B" style="background: #eeeeee; border-style: solid; border-color: #4C72B0; border-width: 4px; border-radius: 8px; width: 150px; height: 150px; margin-right: 70px; margin-left: 20px; margin-bottom: 20px">
+
+</div>
+<div data-id="N" style="background: #eeeeee; border-style: solid; border-color: #C44E52; border-width: 4px; border-radius: 8px; width: 50px; height: 50px; margin-right: 150px; margin-bottom: 20px">
+
+</div>
+</div>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="snsblue">column rep</span></th>
+<th><span class="snsred">row rep</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>entering type</strong></td>
+<td>primal simplex</td>
+<td>dual simplex</td>
+</tr>
+<tr class="even">
+<td><strong>leaving type</strong></td>
+<td>dual simplex</td>
+<td>primal simplex</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>new features often need to be implemented twice</li>
+</ul>
+
+<aside class="notes">
+<ul>
+<li>smaller basis size has computational advantages like smaller LU</li>
+<li>both representations are equivalent and interchangeable</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>📑 Wunderling, 1996</p>
+</div></aside></section>
+<section id="row-representation-1" class="slide level2" data-auto-animate="true" data-auto-animate-unmatched="false">
+<h2 data-id="quarto-animate-title">Row representation</h2>
+<ul>
+<li>define the Simplex basis not as subset of columns but of rows</li>
+<li>basic rows are active constraints defining the current vertex</li>
+</ul>
+<!-- ![](svg/rowrep.svg) -->
+<div class="r-hstack">
+<p>A:</p>
+<div data-id="A" style="background: #eeeeee; border-style: solid; border-color: #000000; border-width: 4px; border-radius: 8px; width: 150px; height: 50px; margin-right: 50px; margin-left: 10px; margin-bottom: 20px">
+
+</div>
+<p>Basis:</p>
+<div data-id="B" style="background: #eeeeee; border-style: solid; border-color: #4C72B0; border-width: 4px; border-radius: 8px; width: 50px; height: 50px; margin-left: 60px; margin-right: 70px; margin-bottom: 20px">
+
+</div>
+<div data-id="N" style="background: #eeeeee; border-style: solid; border-color: #C44E52; border-width: 4px; border-radius: 8px; width: 150px; height: 150px; margin-right: 150px; margin-bottom: 20px">
+
+</div>
+</div>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="snsblue">column rep</span></th>
+<th><span class="snsred">row rep</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>entering type</strong></td>
+<td>primal simplex</td>
+<td>dual simplex</td>
+</tr>
+<tr class="even">
+<td><strong>leaving type</strong></td>
+<td>dual simplex</td>
+<td>primal simplex</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>new features often need to be implemented twice</li>
+</ul>
+
+<aside class="notes">
+<ul>
+<li>smaller basis size has computational advantages like smaller LU</li>
+<li>both representations are equivalent and interchangeable</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>📑 Wunderling, 1996</p>
+</div></aside></section>
+<section id="computational-results" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Computational results</h2>
+
+<img data-src="svg/soplex-rowrep-v2.pdf.svg" class="r-stretch"><aside class="notes">
+<ul>
+<li>LP test set</li>
+<li>minimum solving times of either row or column representation</li>
+<li>in relation to the row-column ratio (x-axis)</li>
+<li>trend towards more wins for col-rep for suited problem instances</li>
+<li>row rep more often wins very easy instances below 1 second</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="computational-results-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Computational results</h2>
+<div class="{columns}">
+<div class="column" style="width:59%;">
+<p><img data-src="svg/soplex-rowrep-v2.pdf.svg"></p>
+</div>
+<div class="column" style="width:40%;">
+<p><br></p>
+<ul>
+<li>always column representation:<br><span class="snsblue">8% slowdown</span></li>
+<li>always row representation:<br><span class="snsred">43% slowdown</span></li>
+<li>automatic switch to row when row/column ratio &gt; 1.2</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>minimum solving times of either row or column representation</li>
+<li>trend towards more wins for col-rep for suited problem instances</li>
+<li>row rep more often wins very easy instances below 1 second</li>
+<li>I worked on making the row rep more reliable and stable to allow for automatic switching (too buggy before)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bound-flipping-ratio-test" class="slide level2">
+<h2>Bound flipping ratio test</h2>
+<ul>
+<li>also known as <em>long step rule</em></li>
+<li>allows increasing the progress made in a single iteration in the dual simplex</li>
+<li>combine several iterations into one <!-- 
+|   | | steepest edge || devex |
+|---|---------------:|---:|-------:|---:|
+|   |time           | iterations | time | iterations
+|no bound flips | 0.80 | 6168| 1.37| 12 841|
+|long step rule | 0.08 | 283 |0.13 |432    | --></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="186f2ff6-06de-44ef-acb1-df227e7ecbc3" class="plotly-graph-div" style="height:340px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("186f2ff6-06de-44ef-acb1-df227e7ecbc3")) {                    Plotly.newPlot(                        "186f2ff6-06de-44ef-acb1-df227e7ecbc3",                        [{"alignmentgroup":"True","hovertemplate":"ratio test=classic<br>measure=iterations<br>value=%{text}<br>pricing=%{y}<extra></extra>","legendgroup":"classic","marker":{"color":"#1F77B4","pattern":{"shape":""}},"name":"classic","offsetgroup":"classic","orientation":"h","showlegend":true,"text":[6168.0,12841.0],"textposition":"auto","x":[6168.0,12841.0],"xaxis":"x","y":["steep","devex"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"ratio test=classic<br>measure=time (sec)<br>value=%{text}<br>pricing=%{y}<extra></extra>","legendgroup":"classic","marker":{"color":"#1F77B4","pattern":{"shape":""}},"name":"classic","offsetgroup":"classic","orientation":"h","showlegend":false,"text":[0.8,1.37],"textposition":"auto","x":[0.8,1.37],"xaxis":"x2","y":["steep","devex"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"ratio test=bound flips<br>measure=iterations<br>value=%{text}<br>pricing=%{y}<extra></extra>","legendgroup":"bound flips","marker":{"color":"#FF7F0E","pattern":{"shape":""}},"name":"bound flips","offsetgroup":"bound flips","orientation":"h","showlegend":true,"text":[283.0,432.0],"textposition":"auto","x":[283.0,432.0],"xaxis":"x","y":["steep","devex"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"ratio test=bound flips<br>measure=time (sec)<br>value=%{text}<br>pricing=%{y}<extra></extra>","legendgroup":"bound flips","marker":{"color":"#FF7F0E","pattern":{"shape":""}},"name":"bound flips","offsetgroup":"bound flips","orientation":"h","showlegend":false,"text":[0.08,0.13],"textposition":"auto","x":[0.08,0.13],"xaxis":"x2","y":["steep","devex"],"yaxis":"y2","type":"bar"}],                        {"template":{"data":{"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"width":3},"marker":{"size":9},"type":"scatter3d"}],"scattergeo":[{"line":{"width":3},"marker":{"size":9},"type":"scattergeo"}],"scattergl":[{"line":{"width":3},"marker":{"size":9},"type":"scattergl"}],"scatterpolargl":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolargl"}],"scatterpolar":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolar"}],"scatter":[{"line":{"width":3},"marker":{"size":9},"type":"scatter"}],"scatterternary":[{"line":{"width":3},"marker":{"size":9},"type":"scatterternary"}],"table":[{"cells":{"height":30},"header":{"height":36},"type":"table"}]},"layout":{"font":{"size":18},"xaxis":{"title":{"standoff":15}},"yaxis":{"title":{"standoff":15}}}},"xaxis":{"anchor":"y","domain":[0.0,0.49],"title":{"text":""}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"pricing"}},"xaxis2":{"anchor":"y2","domain":[0.51,1.0],"title":{"text":""}},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"matches":"y","showticklabels":false},"annotations":[{"font":{},"showarrow":false,"text":"measure=iterations","x":0.245,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"measure=time (sec)","x":0.755,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"legend":{"title":{"text":"ratio test"},"tracegroupgap":0,"traceorder":"reversed"},"title":{"text":"impact on Netlib instance fit2d"},"barmode":"group","font":{"family":"Fira Sans"},"height":340,"width":600},                        {"displayModeBar": false, "responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('186f2ff6-06de-44ef-acb1-df227e7ecbc3');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<p><br></p>
+<ul>
+<li>impact on LP benchmark:
+<ul>
+<li>17% fewer iterations</li>
+<li>7% speedup</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<aside class="notes">
+<ul>
+<li>idea has been around since late 70s</li>
+<li>ratio test determines step length; go as far as possible</li>
+<li>BFRT allows to go even further by flipping bounds when sign changes</li>
+<li>only works with boxed variables and ranged rows</li>
+<li>ratio test is crucial to stability of simplex</li>
+<li>hard to get right and easy to get wrong</li>
+<li>implemented for row and column version of dual simplex</li>
+<li>17% iteration reduction and 7% speedup on allLP</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>📑 Kirillova, Gabasov, and Kostyukova, 1979</p>
+<p>📑 Fourer, 1994</p>
+</div></aside></section></section>
+<section>
+<section id="impact-of-lp-in-solving-milps" class="title-slide slide level1 center">
+<h1>Impact of LP in solving MILPs</h1>
+
+</section>
+<section id="persistent-scaling" class="slide level2">
+<h2>Persistent scaling</h2>
+<ul>
+<li>one scaling factor for every row and every column: <span class="math inline">\(A'=RAC,\; R,C\)</span> diagonal</li>
+<li>keep LP scaling factors for the entire MILP solving process</li>
+<li>pass all LP modifications through scaling layer</li>
+<li>better numerics and performance for cuts and node LPs</li>
+<li>solves 9 more instances on MIPLIB 2017</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="89fb15f0-8513-4664-bc3c-9697d2b34ce6" class="plotly-graph-div" style="height:370px; width:1000px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("89fb15f0-8513-4664-bc3c-9697d2b34ce6")) {                    Plotly.newPlot(                        "89fb15f0-8513-4664-bc3c-9697d2b34ce6",                        [{"alignmentgroup":"True","hovertemplate":"setting=no bound flips<br>measure=%{x}<br>value=%{text}<extra></extra>","legendgroup":"no bound flips","marker":{"color":"#1F77B4","pattern":{"shape":""}},"name":"no bound flips","offsetgroup":"no bound flips","orientation":"v","showlegend":true,"text":[6.210544356574375,-1.0909522115498556,-2.00160128102482],"textposition":"auto","texttemplate":"%{y:.1f}","x":["iterations","nodes","time"],"xaxis":"x","y":[6.210544356574375,-1.0909522115498556,-2.00160128102482],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"setting=no persistent scaling<br>measure=%{x}<br>value=%{text}<extra></extra>","legendgroup":"no persistent scaling","marker":{"color":"#FF7F0E","pattern":{"shape":""}},"name":"no persistent scaling","offsetgroup":"no persistent scaling","orientation":"v","showlegend":true,"text":[16.134194009021133,6.261117040199227,9.767814251401111],"textposition":"auto","texttemplate":"%{y:.1f}","x":["iterations","nodes","time"],"xaxis":"x","y":[16.134194009021133,6.261117040199227,9.767814251401111],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"setting=no sparse pricing<br>measure=%{x}<br>value=%{text}<extra></extra>","legendgroup":"no sparse pricing","marker":{"color":"#2CA02C","pattern":{"shape":""}},"name":"no sparse pricing","offsetgroup":"no sparse pricing","orientation":"v","showlegend":true,"text":[0.2552646356594879,-0.047432704849991375,0.8807045636509161],"textposition":"auto","texttemplate":"%{y:.1f}","x":["iterations","nodes","time"],"xaxis":"x","y":[0.2552646356594879,-0.047432704849991375,0.8807045636509161],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"setting=no stable sum<br>measure=%{x}<br>value=%{text}<extra></extra>","legendgroup":"no stable sum","marker":{"color":"#D62728","pattern":{"shape":""}},"name":"no stable sum","offsetgroup":"no stable sum","orientation":"v","showlegend":true,"text":[3.616433292763744,2.9467567888058843,0.32025620496396434],"textposition":"auto","texttemplate":"%{y:.1f}","x":["iterations","nodes","time"],"xaxis":"x","y":[3.616433292763744,2.9467567888058843,0.32025620496396434],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"width":3},"marker":{"size":9},"type":"scatter3d"}],"scattergeo":[{"line":{"width":3},"marker":{"size":9},"type":"scattergeo"}],"scattergl":[{"line":{"width":3},"marker":{"size":9},"type":"scattergl"}],"scatterpolargl":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolargl"}],"scatterpolar":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolar"}],"scatter":[{"line":{"width":3},"marker":{"size":9},"type":"scatter"}],"scatterternary":[{"line":{"width":3},"marker":{"size":9},"type":"scatterternary"}],"table":[{"cells":{"height":30},"header":{"height":36},"type":"table"}]},"layout":{"font":{"size":18},"xaxis":{"title":{"standoff":15}},"yaxis":{"title":{"standoff":15}}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"measure"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"percent improvement"},"range":[-5,16]},"legend":{"title":{"text":"setting"},"tracegroupgap":0},"title":{"text":"Performance impact of SoPlex features on MIPLIB 2017 instances (all optimal)"},"barmode":"group","font":{"family":"Fira Sans"},"height":370,"width":1000},                        {"displayModeBar": false, "responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('89fb15f0-8513-4664-bc3c-9697d2b34ce6');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>update scaling factors for added variables and constraints</li>
+<li>was one reason to write a new LP interface between SCIP and SoPlex</li>
+<li>persistent scaling leads to largest performance improvement</li>
+<li>BFRT performance does not carry over to SCIP</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- ## Fractionality of the LP solution
+- highly integer-valued ("clean") LP solution is generally preferred
+
+![Performance and fractionality comparison between Simplex and Barrier on MIPLIB 2017](svg/scip-simplex-vs-barrier-rootLP-MIPLIB2017.pdf.svg)
+
+:::{.notes}
+- fewer branching decisions, higher chance to complete a solution heuristically
+- no quality guarantee, though
+- chart shows SCIP/MOSEK root LP results on MIPLIB 2017
+- left charts show how difficult it is to decide between Simplex and Barrier
+- most solvers just run both methods concurrently in the root LP
+- right chart shows massive fractionality increase compared to Simplex
+- crossover is crucial to get a basic solution
+::: -->
+</section>
+<section id="lp-solution-polishing" class="slide level2">
+<h2>LP Solution Polishing</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="svg/polishing-crop.svg" style="width:100.0%"></p>
+</div><div class="column" style="width:59%;">
+<p><br></p>
+<ul>
+<li>not all solutions are equal</li>
+<li>additional iterations to find less fractional solutions (more non-basic integer variables)</li>
+<li>performed internally by SoPlex</li>
+<li>SCIP provides integrality information</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Not to be confused with <strong>[MIP] Solution Polishing</strong> by Ed Rothberg, <em>An evolutionary algorithm for polishing mixed integer programming solutions</em>, INFORMS Journal on Computing (2007).</p>
+</div>
+</div>
+</div>
+
+<aside class="notes">
+<ul>
+<li>runs primal Simplex</li>
+<li>customized pricing and ratio test to favor non-basic integer variables</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>📑 Gamrath, Berthold, and Salvagnin, <em>An exploratory computational analysis of dual degeneracy in mixed-integer programming</em>, 2020</p>
+<p>📑 Achterberg, <em>pump-reduce</em>, 2013</p>
+</div></aside></section>
+<section id="computational-results-on-miplib-2017" class="slide level2">
+<h2>Computational results on MIPLIB 2017</h2>
+
+<img data-src="svg/polishing-effect-miplib2017-speedup-scip7.pdf.svg" width="1000" class="r-stretch"><aside class="notes">
+<ul>
+<li>downward pointing bars are good</li>
+<li>mixed results: some outliers with strongly increased runtimes</li>
+<li>half of first LPs benefit from reduced fractionality</li>
+<li>more than 80% reduction on some instances</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="first-lp-effect-on-miplib-2017" class="slide level2">
+<h2>First LP effect on MIPLIB 2017</h2>
+
+<img data-src="svg/polishing-effect-miplib2017-firstLP-time-and-iters-scip7.pdf.svg" width="1000" class="r-stretch"><aside class="notes">
+<ul>
+<li>most increase in time and iters when also fractionality was reduced</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tabular-results" class="slide level2">
+<h2>Tabular results</h2>
+<div class="r-stack">
+<p><img data-src="svg/polishing-table.svg" class="fragment fade-in-then-out" width="1000"></p>
+<p><img data-src="svg/polishing-table-markup.svg" class="fragment fade-in" width="1000"></p>
+</div>
+<aside class="notes">
+<ul>
+<li>3 more instances solved, 6% overall speedup, 8% node reduction</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="different-lp-solvers-in-scip-miplib-2017" class="slide level2">
+<h2>Different LP solvers in SCIP (MIPLIB 2017)</h2>
+
+<img data-src="svg/scip-cumu-lp-comparison-miplib2017-default.pdf.svg" class="r-stretch"><aside class="notes">
+<ol type="1">
+<li>cumulative comparison combining solved instances and timeouts</li>
+<li>right section shows the respective remaining gap after one hour</li>
+<li>Clp and MOSEK are performing worse than the “big 3” and even SoPlex</li>
+<li>Clp suffers from many instable solves that are not shown here</li>
+<li>next chart might be surprising…</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pure-lp-comparison" class="slide level2">
+<h2>Pure LP comparison</h2>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="635b3312-01f3-4061-a231-0aa66260f430" class="plotly-graph-div" style="height:550px; width:1000px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("635b3312-01f3-4061-a231-0aa66260f430")) {                    Plotly.newPlot(                        "635b3312-01f3-4061-a231-0aa66260f430",                        [{"alignmentgroup":"True","hovertemplate":"solver=CPLEX<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"CPLEX","marker":{"color":"#1F77B4","pattern":{"shape":""}},"name":"CPLEX","offsetgroup":"CPLEX","orientation":"h","showlegend":true,"text":[1.026,0.866],"textposition":"auto","texttemplate":"%{x:.2f}","x":[1.026,0.866],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=CPLEX<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"CPLEX","marker":{"color":"#1F77B4","pattern":{"shape":""}},"name":"CPLEX","offsetgroup":"CPLEX","orientation":"h","showlegend":false,"text":[49.814,41.954],"textposition":"auto","texttemplate":"%{x:.2f}","x":[49.814,41.954],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Clp<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Clp","marker":{"color":"#FF7F0E","pattern":{"shape":""}},"name":"Clp","offsetgroup":"Clp","orientation":"h","showlegend":true,"text":[1.411,1.46],"textposition":"auto","texttemplate":"%{x:.2f}","x":[1.411,1.46],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Clp<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Clp","marker":{"color":"#FF7F0E","pattern":{"shape":""}},"name":"Clp","offsetgroup":"Clp","orientation":"h","showlegend":false,"text":[101.645,112.102],"textposition":"auto","texttemplate":"%{x:.2f}","x":[101.645,112.102],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Gurobi<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Gurobi","marker":{"color":"#2CA02C","pattern":{"shape":""}},"name":"Gurobi","offsetgroup":"Gurobi","orientation":"h","showlegend":true,"text":[0.98,0.8],"textposition":"auto","texttemplate":"%{x:.2f}","x":[0.98,0.8],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Gurobi<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Gurobi","marker":{"color":"#2CA02C","pattern":{"shape":""}},"name":"Gurobi","offsetgroup":"Gurobi","orientation":"h","showlegend":false,"text":[49.1,39.372],"textposition":"auto","texttemplate":"%{x:.2f}","x":[49.1,39.372],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=MOSEK<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"MOSEK","marker":{"color":"#D62728","pattern":{"shape":""}},"name":"MOSEK","offsetgroup":"MOSEK","orientation":"h","showlegend":true,"text":[1.327,1.172],"textposition":"auto","texttemplate":"%{x:.2f}","x":[1.327,1.172],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=MOSEK<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"MOSEK","marker":{"color":"#D62728","pattern":{"shape":""}},"name":"MOSEK","offsetgroup":"MOSEK","orientation":"h","showlegend":false,"text":[96.868,85.126],"textposition":"auto","texttemplate":"%{x:.2f}","x":[96.868,85.126],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=SoPlex<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"SoPlex","marker":{"color":"#9467BD","pattern":{"shape":""}},"name":"SoPlex","offsetgroup":"SoPlex","orientation":"h","showlegend":true,"text":[1.564,1.691],"textposition":"auto","texttemplate":"%{x:.2f}","x":[1.564,1.691],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=SoPlex<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"SoPlex","marker":{"color":"#9467BD","pattern":{"shape":""}},"name":"SoPlex","offsetgroup":"SoPlex","orientation":"h","showlegend":false,"text":[123.616,150.762],"textposition":"auto","texttemplate":"%{x:.2f}","x":[123.616,150.762],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Xpress<br>testset=all opt<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Xpress","marker":{"color":"#8C564B","pattern":{"shape":""}},"name":"Xpress","offsetgroup":"Xpress","orientation":"h","showlegend":true,"text":[1.155,1.111],"textposition":"auto","texttemplate":"%{x:.2f}","x":[1.155,1.111],"xaxis":"x","y":["default","presoloff"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"solver=Xpress<br>testset=min 5 sec<br>sh. geo. mean time=%{text}<br>setting=%{y}<extra></extra>","legendgroup":"Xpress","marker":{"color":"#8C564B","pattern":{"shape":""}},"name":"Xpress","offsetgroup":"Xpress","orientation":"h","showlegend":false,"text":[68.037,70.77],"textposition":"auto","texttemplate":"%{x:.2f}","x":[68.037,70.77],"xaxis":"x2","y":["default","presoloff"],"yaxis":"y2","type":"bar"}],                        {"template":{"data":{"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"width":3},"marker":{"size":9},"type":"scatter3d"}],"scattergeo":[{"line":{"width":3},"marker":{"size":9},"type":"scattergeo"}],"scattergl":[{"line":{"width":3},"marker":{"size":9},"type":"scattergl"}],"scatterpolargl":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolargl"}],"scatterpolar":[{"line":{"width":3},"marker":{"size":9},"type":"scatterpolar"}],"scatter":[{"line":{"width":3},"marker":{"size":9},"type":"scatter"}],"scatterternary":[{"line":{"width":3},"marker":{"size":9},"type":"scatterternary"}],"table":[{"cells":{"height":30},"header":{"height":36},"type":"table"}]},"layout":{"font":{"size":18},"xaxis":{"title":{"standoff":15}},"yaxis":{"title":{"standoff":15}}}},"xaxis":{"anchor":"y","domain":[0.0,0.49],"title":{"text":"sh. geo. mean time"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"setting"},"categoryorder":"category descending"},"xaxis2":{"anchor":"y2","domain":[0.51,1.0],"title":{"text":"sh. geo. mean time"}},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"matches":"y","showticklabels":false},"annotations":[{"font":{},"showarrow":false,"text":"testset=all opt","x":0.245,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"testset=min 5 sec","x":0.755,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"legend":{"title":{"text":"solver"},"tracegroupgap":0,"traceorder":"reversed"},"title":{"text":"solving times on LP testset using SCIP"},"barmode":"group","font":{"family":"Fira Sans"},"height":550,"width":1000},                        {"displayModeBar": false, "responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('635b3312-01f3-4061-a231-0aa66260f430');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>SoPlex stands out with the worst performance</li>
+<li>can also be seen on Hans Mittelmann’s LP benchmarks but way less pronounced (factor 20 vs 2 or 3)</li>
+<li>larger problems are harder for SoPlex</li>
+<li>MILPs are often smaller than LPs</li>
+<li>not pictured: time spent in LP is very comparable among solvers</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="effect-on-the-root-gap-miplib-2017" class="slide level2">
+<h2>Effect on the root gap (MIPLIB 2017)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="svg/scip-rootgap-MIPLIB2017.pdf.svg" style="width:100.0%"></p>
+</div><div class="column" style="width:30%;">
+<table>
+<thead>
+<tr class="header">
+<th>LP solver</th>
+<th>wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPLEX</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<td>SoPlex</td>
+<td>59</td>
+</tr>
+<tr class="odd">
+<td>MOSEK</td>
+<td>55</td>
+</tr>
+<tr class="even">
+<td>Gurobi</td>
+<td>53</td>
+</tr>
+<tr class="odd">
+<td>Xpress</td>
+<td>51</td>
+</tr>
+<tr class="even">
+<td>Clp</td>
+<td>48</td>
+</tr>
+</tbody>
+</table>
+<p>177 instances finished root node after one hour</p>
+</div>
+</div>
+<!-- . . .
+
+| CPLEX | Clp | Gurobi | MOSEK | SoPlex | Xpress |
+|-------|-----|--------|-------|--------|--------|
+| 79    | 48  |   53   |  55   |  59    | 51     | -->
+<aside class="notes">
+<ol type="1">
+<li>instances are sorted by best gap over all solvers (nodelimit 1)</li>
+<li>already big differences after the root node processing</li>
+<li>SoPlex takes the second place in finding a good root gap</li>
+<li>pure LP speed is not enough</li>
+</ol>
+<ul>
+<li>air05: CPLEX finds better primal bound in root</li>
+<li>net12: CPLEX has fewer fracts</li>
+<li>gmu-35-50: different primal heuristics</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<!-- ## Node throughput comparison
+
+![](svg/scip-nodethroughput-MIPLIB2017.pdf.svg)
+
+:::{.notes}
+- disabled cutting planes and primal heuristics
+- only compare instances with at least 100 nodes in one hour
+- Clp is again performing worst, Mosek is on second last place
+- node throughput of SoPlex is comparable to Xpress
+- this metric combined with root gap explains why SoPlex performs well as LP solver in SCIP
+- additionally, Clp suffers from many instable solves that are not shown here
+- speaking of numerical issues...
+::: -->
+</section></section>
+<section>
+<section id="numerics-in-branch-bound-cut" class="title-slide slide level1 center">
+<h1>Numerics in <br>Branch &amp; Bound &amp; Cut</h1>
+<p>Joint work with Ted Ralphs and Dan Steffy</p>
+<!-- ## Avoid this situation in the solver
+
+
+
+
+
+
+
+
+
+:::{.notes}
+- happened in 2017
+- people only had light injuries
+::: -->
+<!-- ## Avoid this situation in the solver
+
+![](images/dominos.gif) -->
+<!-- ## What this looks like in SoPlex
+
+<pre style="font-size:0.7em">
+[...]
+  E  |    0.0 |    1398 |    17 | 1.00e+00 |  2.17e+03 | 0.00000000e+00
+  E  |    0.0 |    1598 |    18 | 1.00e+00 |  1.04e+03 | 0.00000000e+00
+WDEVEX02 trying refinement step..
+ --- solve(enter) triggers refactorization
+ --- refactorizing basis matrix
+IBASIS13 problems updating factorization; refactorizing basis
+ --- refactorizing basis matrix
+ISLUFA01 refactorizing with increased Markowitz threshold: 1.00000000e-01
+ISLUFA01 refactorizing with increased Markowitz threshold: 5.50000000e-01
+ISLUFA01 refactorizing with increased Markowitz threshold: 7.75000000e-01
+ISLUFA01 refactorizing with increased Markowitz threshold: 8.87500000e-01
+ISLUFA01 refactorizing with increased Markowitz threshold: 9.43750000e-01
+ISLUFA01 refactorizing with increased Markowitz threshold: 9.99990000e-01
+<span style="color:red">Caught exception &lt;Basis is singular (numerical troubles, feastol = 1e-06,
+ opttol = 1e-08)&gt; while solving real LP.</span>
+
+SoPlex status       : basis is singular
+</pre>
+
+<br>
+😓
+
+:::{.notes}
+- generated on one node LP from the ilaser instance
+- numerically hard instance (toeplitz matrix)
+::: -->
+</section>
+<section id="a-difficult-question" class="slide level2">
+<h2>A difficult question…</h2>
+<p>… is it <span style="color:blue">Laurel</span> or <span style="color:red">Yanny</span>?</p>
+<p><img data-src="graphics/laurel_yanny.jpeg" class="absolute" style="width: 60%; "></p>
+<aside class="notes">
+<ul>
+<li>tough question with no clear answer</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a-numerically-difficult-question" class="slide level2">
+<h2>A numerically difficult question…</h2>
+<p>Consider this feasibility problem (no objective function):</p>
+<p><span class="math display">\[
+\begin{align}
+x + 10^{-8}y &amp;= 10^{-7}\\
+x, y &amp;= 0
+\end{align}
+\]</span></p>
+<ul>
+<li>mathematically infeasible (because <span class="math inline">\(0 + 0 \neq 10^{-7}\)</span>)</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>using a feasibility tolerance of <span class="math inline">\(\epsilon=10^{-6}\)</span>:</li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:40%;">
+<h3 id="x-is-basic"><span class="math inline">\(x\)</span> is basic</h3>
+<ul>
+<li><span class="math inline">\(y=0\)</span> non-basic</li>
+<li><span class="math inline">\(x=10^{-7}\)</span> basic</li>
+<li><span style="color:blue">feasible solution</span> (within <span class="math inline">\(\epsilon\)</span>)</li>
+</ul>
+</div>
+<div class="column" style="width:40%;">
+<h3 id="y-is-basic"><span class="math inline">\(y\)</span> is basic</h3>
+<ul>
+<li><span class="math inline">\(x=0\)</span> is non-basic</li>
+<li><span class="math inline">\(y=10\)</span> basic</li>
+<li><span style="color:red">infeasible solution</span></li>
+</ul>
+</div>
+</div>
+<p><code>-&gt;</code> <strong>The result depends on the chosen Simplex basis!</strong></p>
+<aside class="notes">
+<ul>
+<li>certainly important to deal with numerical issues</li>
+<li>ideally, identifying problematic instances before running into problems</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="how-to-measure-numerical-difficulty" class="slide level2">
+<h2>How to measure numerical difficulty?</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition of condition number <span class="math inline">\(\kappa\)</span> of a square matrix <span class="math inline">\(A\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\kappa(A) = \|A\|\cdot\|A^{-1}\|\)</span> provides upper bound on input error amplification in the solution of a linear system <span class="math inline">\(Ax=b\)</span>. It is the normed reciprocal of the distance to singularity and applicable to LP/MILP because of their reliance on solving linear systems with the Simplex basis matrix.</p>
+</div>
+</div>
+</div>
+<div class="r-hstack">
+<p><span class="math inline">\(\kappa\)</span>:</p>
+<div data-id="A" style="background: rgb(85, 168, 104, 0.6); border-style: none none none solid; border-color: #000000; border-width: 4px; border-radius: 10px; width: 160px; height: 50px; margin-left: 10px; margin-bottom: 20px">
+<div style="text-align:center">
+<p><span class="math inline">\(\;1 \dots 10^7\)</span> <br> fine</p>
+</div>
+</div>
+<div data-id="A" style="background: rgba(76, 114, 176, 0.6); border-style: none none none solid; border-color: #000000; border-width: 4px; border-radius: 10px; width: 210px; height: 50px; margin-left: -4px; margin-bottom: 20px">
+<div style="text-align:center">
+<p><span class="math inline">\(\;10^7 \dots 10^{10}\)</span> <br> suspicious</p>
+</div>
+</div>
+<div data-id="A" style="background: rgba(221, 132, 83, 0.6); border-style: none none none solid; border-color: #000000; border-width: 4px; border-radius: 10px; width: 220px; height: 50px; margin-left: -4px; margin-bottom: 20px">
+<div style="text-align:center">
+<p><span class="math inline">\(\;10^{10} \dots 10^{14}\)</span> <br> unstable</p>
+</div>
+</div>
+<div data-id="A" style="background: rgba(196, 79, 81, 0.6); border-style: none none none solid; border-color: #000000; border-width: 4px; border-radius: 10px; width: 220px; height: 50px; margin-left: -4px; margin-bottom: 20px">
+<div style="text-align:center">
+<p><span class="math inline">\(\;&gt;10^{14}\)</span> <br> ill-posed</p>
+</div>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li>upper bound is typically not reached</li>
+<li>machine precision <span class="math inline">\(10^{-16}\)</span> and tolerance <span class="math inline">\(10^{-6}\)</span> to handle <span class="math inline">\(\kappa&lt;10^{10}\)</span></li>
+<li>ideal: instance-specific, solver-independent metric for MILPs</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>usual strategy: sample Kappa in the tree</li>
+<li>dependent on the solver and its behavior</li>
+<li>condition number computation is at least the cost of solving the problem</li>
+<li>usually approximated</li>
+<li>the condition of the condition is the condition number</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lp-approach" class="slide level2">
+<h2>LP approach</h2>
+<ul>
+<li>compute a <span class="math inline">\(\kappa_\text{LP}\)</span> value that captures the entire problem data <span class="math inline">\(d=(A,b,c)\)</span>: <span class="math display">\[
+\begin{align}
+\kappa_\text{LP}(d) &amp;:= \frac{\left\|d\right\|}{\min\left\{\rho_P(d), \rho_D(d)\right\}}, \\[1em]
+\|d\| &amp;:= \max\left\{\|A\|_{\infty,1}, \|b\|_1, \|c\|_1\right\},\\[.5em]
+\rho_P(d) &amp;:= \min_{i\in\left\{1,\dots,m\right\},\;j\in\left\{-1,1\right\}} \min_{y,s,v} \max\left\{\left\|A^T y+s-\right\|_1, \left|b^T y - v\right|\right\} \\[-1em]
+&amp; \hspace{8.8em}\text{subject to}\quad y_i=j, \\[.5em]
+\rho_D(d) &amp;:= \min_{i\in\left\{1,\dots,n\right\},\;j\in\left\{-1,1\right\}} \min_{x,p,g} \max\left\{\left\|Ax - p \right\|_1, \left|c^T x + g\right|\right\} \\[-1em]
+&amp; \hspace{8.6em}\text{subject to}\quad x_i=j
+\end{align}
+\]</span></li>
+</ul>
+
+<aside class="notes">
+<ul>
+<li>normed reciprocal to the minimum of the distances to primal or dual feasibility</li>
+<li>the bounds of the variables are also considered but left out better readability</li>
+<li>they showed a relation to the number of barrier iterations required to solve the instance</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>📑 Ordóñez and Freund: “Computational Experience and the Explanatory Value of Condition Measures for Linear Optimization”. SIAM Journal on Optimization (2003)</p>
+</div></aside></section>
+<section id="applied-to-milp-ignoring-integrality" class="slide level2">
+<h2>Applied to MILP (ignoring integrality)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="svg/kappaLPstats.pdf.svg" width="550"></p>
+</div><div class="column" style="width:49%;">
+<ul>
+<li>both CPLEX and Xpress implement MIP-<span class="math inline">\(\kappa\)</span></li>
+<li>hard to make any reliable statements</li>
+<li>too many problems are “ill-conditioned” <span class="math inline">\((\kappa_\text{LP}\geq 10^{20})\)</span></li>
+<li>attention level learning appears to be a promising alternative<br><span class="footnote">📑 Berthold, Numerics IV: Learning to pay attention, 2020</span></li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>CPLEX and Xpress implement a MIP kappa to sample the condition numbers of optimal basis matrices</li>
+<li>attention level is a weighted sum of percentages of kappa values</li>
+<li>matrix plot does not reveal any relationship for kappa_LP</li>
+<li>attention level and max log kappa shows some information</li>
+<li>use exact or high-precision solvers to handle numerically challenging models</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- ## Conclusion on numerics for MILP
+
+- it remains a tough subject
+- general assumptions and *a priori* measures are difficult to apply
+- attention-level learning appears promising
+- ill-conditioned problems require higher precision or exact solvers
+
+:::{.notes}
+- performance of precision-boosting and exact arithmetic has improved a lot
+- close inspection of the numerical issues of an individual model is important
+- "attention level" provides a good indication (only available after runtime)
+- but there was a side product of our studies...
+:::
+ -->
+</section>
+<section id="treed-as-a-side-product" class="slide level2">
+<h2>TreeD as a side product</h2>
+<iframe src="treed/TreeD_lseu_large.html" width="100%" height="80%">
+</iframe>
+
+<aside class="notes">
+<ul>
+<li>started as a tool to study numerical features of MILP trees</li>
+<li>LP-focused visualization keeps true to the theme of the thesis</li>
+<li>uses custom EventHandler in PySCIPOpt to collect LP data</li>
+<li>Python package <code>scikit-learn</code> transforms high-dimensional solutions to 3D or 2D (Multi dim. scaling)</li>
+<li>can provide additional insight into how SCIP solves a problem (LP iters, condition numbers)</li>
+<li>reveals impact of cutting planes</li>
+<li>artistic value: quite pretty to look at</li>
+<li>ported to <a href="https://amira.zib.de/">Amira</a> for 3D-Studio DaVinci at ZIB</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><a href="https://github.com/mattmilten/TreeD" class="uri">https://github.com/mattmilten/TreeD</a></p>
+</div></aside></section>
+<section id="mittelmann-benchmark-plots" class="slide level2">
+<h2>Mittelmann benchmark plots</h2>
+<ul>
+<li>interactive solver-by-solver comparisons<sup>1</sup></li>
+<li>largest publicly available benchmark dataset for linear, mixed-integer, nonlinear, and combinatorial problems by Hans Mittelmann<sup>2</sup></li>
+<li>published results are updated on a daily basis</li>
+<li>easier overview of latest ranking</li>
+<li>additional <em>virtual best</em> or <em>portfolio solver</em> to reveal performance potential</li>
+</ul>
+
+<p><a href="https://mattmilten.github.io/mittelmann-plots/milp_8threads-SCIP.html" data-preview-link="true"><code>-&gt;</code> MIPLIB 2017 benchmark using SCIP/spx as base</a></p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://github.com/mattmilten/mittelmann-plots" class="uri">https://github.com/mattmilten/mittelmann-plots</a></p></li><li id="fn2"><p><a href="http://plato.asu.edu./bench.html" class="uri">http://plato.asu.edu./bench.html</a></p></li></ol></aside></section>
+<section class="slide level2">
+
+<iframe src="graphics/milp_8threads-SCIP.html" width="100%" height="100%">
+</iframe>
+<aside class="notes">
+<ul>
+<li>adds some more visibility to those benchmarks and the optimization community</li>
+<li>more accessible than raw tables</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li>Simplex-oriented perspective on MILP solving</li>
+<li>performance and stability improvements for LP in MILP
+<ul>
+<li>persistent scaling</li>
+<li>solution polishing</li>
+</ul></li>
+<li>impact of different LP solvers in SCIP
+<ul>
+<li>pure LP performance is not decisive factor</li>
+</ul></li>
+<li>LP-based numerical study on MILP
+<ul>
+<li>goal: find holistic measure to determine when to branch</li>
+<li>resulting in TreeD visualization</li>
+</ul></li>
+<li>PySCIPOpt extending the accessibility and usability of SCIP</li>
+</ul>
+<div class="fragment">
+<div class="absolute" style="top: 250px; right: 50px; ">
+<p><span class="snsblue" style="font-size:2em"><strong><em>Thank you!</em></strong></span></p>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>“LP does not matter for MILP”</li>
+<li>expect continued competition in the optimization landscape, fueled by Hans’ benchmarks</li>
+<li>numerical study is one piece in this vast area of research that deserves more attention and understanding</li>
+<li>TreeD demonstrates how PySCIPOpt can be used</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section>
+<section>
+<section id="algorithms" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Algorithms</h1>
+
+</section>
+<section id="section" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/simplex-algo.svg" class="r-stretch quarto-figure-center"><p class="caption">Simplex</p></section>
+<section id="section-1" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/polishing-algo.svg" class="r-stretch quarto-figure-center"><p class="caption">Solution polishing</p></section></section>
+<section>
+<section id="figures-1.-introduction" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Figures<br><br>1. Introduction</h1>
+
+</section>
+<section id="section-2" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/lp-sizes.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 1.5:</strong> Size distribution of LP test set, including solving time colorization for SoPlex with default settings. Sparsity is computed as nonzeros/<span class="math inline">\((n*m)\)</span></p></section>
+<section id="section-3" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/soplex-performance-nonzeros.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 1.6:</strong> Number of iterations and time to optimality (using a time limit of one hour) with respect to the number of nonzero elements in the problem matrices</p></section></section>
+<section>
+<section id="figures-3.-implementational-aspects-of-the-simplex-algorithm" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Figures<br><br>3. Implementational Aspects of the Simplex Algorithm</h1>
+
+</section>
+<section id="section-4" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/soplex-rowrep.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 3.1:</strong> Minimum solving times for row and column representation depending on row to column ratio on the allLP test set.</p></section>
+<section id="section-5" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/pricing_sparsity.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 3.4:</strong> Pricing statistics</p></section>
+<section id="section-6" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/alllp-variascore.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 3.6:</strong> Distribution of variability scores &gt; <span class="math inline">\(10^{−6}\)</span> for solving time and iterations of SoPlex 4.0.2 across three different seeds; allLP test set</p></section></section>
+<section>
+<section id="figures-4.-impact-of-linear-programming-in-milp" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Figures<br><br>4. Impact of Linear Programming in MILP</h1>
+
+</section>
+<section id="section-7" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-LPratio-comparison-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.2:</strong> Fraction of time spent solving LPs during MILP solving; MIPLIB 2017 benchmark</p></section>
+<section id="section-8" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-simplex-vs-barrier-rootLP-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.3:</strong> Comparison of root LP performance with SCIP/MOSEK; MIPLIB 2017 benchmark</p></section>
+<section id="section-9" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-LPratio-histogram-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.4:</strong> Histogram of fraction of time spent solving LPs during MILP solving; MIPLIB 2017 benchmark</p></section>
+<section id="section-10" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-LPfraction-types-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.5:</strong> Distribution of different LP types to be solved during MILP optimization; MIPLIB 2017 benchmark</p></section>
+<section id="section-11" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/mds-demo.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.9:</strong> Illustrative example of MDS transformation and associated Shepard error plot</p></section>
+<section id="section-12" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/TreeD_lseu-crop.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.10:</strong> TreeD visualization of MIPLIB3 instance lseu (89 binary variables, 28 constraints)</p></section>
+<section id="section-13" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/TreeD_lseu_shepard-crop.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.11:</strong> Shepard plot of original and transformed pairwise distances of all encountered node LP solutions after applying the MDS transformation</p></section>
+<section id="section-14" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-cumu-lp-comparison-miplib2017-default.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.12:</strong> Overall performance comparison of different LP solvers in SCIP 6.0.2 with default settings on MIPLIB 2017 benchmark.</p></section>
+<section id="section-15" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-root-comparison-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.13:</strong> Distribution of solving time and iteration ratios for different LP solvers in SCIP to solve the root LPs on MIPLIB 2017 benchmark.</p></section>
+<section id="section-16" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-LP-metric-comparison-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.14:</strong> Development of node LP solving times and simplex iterations in the tree, relative to the root LP. MIPLIB 2017 instances solved within one hour by all solvers (54 instances)</p></section>
+<section id="section-17" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-rootgap-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.15:</strong> Comparison of the gap after root node processing. Node limit of one, time limit of one hour on MIPLIB 2017 benchmark (117 instances).</p></section>
+<section id="section-18" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/scip-nodethroughput-MIPLIB2017.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 4.16:</strong> Comparison of the node throughput, time limit of one hour MIPLIB 2017 benchmark. No cuts, no primal heuristics. Results are restricted to instances with a tree size of at least 100.</p></section></section>
+<section>
+<section id="figures-5.-lp-solution-polishing" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Figures<br><br>5. LP Solution Polishing</h1>
+
+</section>
+<section id="section-19" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/polishing-effect-miplib2017-firstLP-cond-scip7.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 5.2:</strong> Effect of LP solution polishing on the condition numbers of the optimal basis matrix of first LP relaxations of the MIPLIB 2017 benchmark instances. Condition number changes are differences in log10 with and w/o polishing.</p></section>
+<section id="section-20" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/polishing-effect-miplib2017-firstLP-time-and-iters-scip7.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 5.3:</strong> Effect of solution polishing on the fractionality of the first LP solution for the MIPLIB 2017 benchmark instances. 3 seeds with SCIP 7</p></section>
+<section id="section-21" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/polishing-effect-miplib2017-speedup-scip7.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 5.4:</strong> Effect of solution polishing on the total solving time for the MIPLIB 2017 benchmark instances. Factors below 1 indicate a speedup. 3 seeds with SCIP 7.</p></section></section>
+<section>
+<section id="figures-6.-numerics-in-branch-bound-cut" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>Figures<br><br>6. Numerics in Branch &amp; Bound &amp; Cut</h1>
+
+</section>
+<section id="section-22" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/simplex-root-sample.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><br><strong>Figure 6.3:</strong> Condition number development (vertical axis, in log scale) for every simplex iteration in the root node (horizontal axis) including re-optimizations after adding cutting planes in multiple rounds (vertical lines). A plot of objective values at each iteration is overlaid as a dashed gray line with the scales given to the right of each plot.</p></section>
+<section id="section-23" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/orig-vs-cuts-root-crop.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 6.4:</strong> Root node comparison of condition numbers of the original LP and after including cutting planes. Most instances show a higher condition number during the cutting stage and when this process is completed</p></section>
+<section id="section-24" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/aggcondition_mm_optmintree.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 6.5:</strong> Aggregated condition numbers (in log10 scale) for different tree depths. MMM test set; solved in 1 hour and min tree depth of 10. Mean value of condition numbers and the respective 95% confidence interval. Breadth-first search with different cutting plane separation strategies.</p></section>
+<section id="section-25" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/good_cond_tree_bfs_sepaprescaleoff.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 6.6:</strong> Expected developments of condition numbers (in log10 scale): aggressive separation (sepaaggr) leads to an increased condition number across the entire tree while disabled cutting plane separation generates a larger tree but has smaller condition numbers.</p></section>
+<section id="section-26" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/bad_cond_tree_bfs_sepaprescaleoff.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 6.7:</strong> Unexpected developments of condition numbers (in log10 scale): Disabling cutting plane generation (sepaoff) leads to worse condition numbers. The left instance exhibits decreasing condition numbers going down the tree while for the right instance, the numbers are growing.</p></section>
+<section id="section-27" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+<img data-src="svg/kappaLPstats.pdf.svg" class="r-stretch quarto-figure-center"><p class="caption"><strong>Figure 6.8:</strong> Statistics of the κ<span class="math inline">\(_\text{LP}\)</span> values and the tree condition numbers for various MILPs. Note that the κ<span class="math inline">\(_\text{LP}\)</span> values are in each case the lower bounds from the estimation. The lower right subplot shows the κ<span class="math inline">\(_\text{LP}\)</span> distribution which is independent of the solver.</p></section></section>
+<section>
+<section id="pyscipopt" class="title-slide slide level1 appendix center" data-visibility="uncounted">
+<h1>PySCIPOpt</h1>
+<p>The Python interface to SCIP</p>
+</section>
+<section id="python-interface-to-scip" class="slide level2" data-visibility="uncounted">
+<h2>Python interface to SCIP</h2>
+<ul>
+<li>easy entryway to using and extending SCIP</li>
+<li>publicly developed on GitHub<sup>1</sup> under the MIT license since 2016</li>
+<li><code>conda install pyscipopt</code> also installs the SCIP Opt Suite</li>
+</ul>
+
+<!-- ![](https://starchart.cc/scipopt/PySCIPOpt.svg){.absolute bottom=60} -->
+<p><img data-src="svg/PySCIPOpt.svg" class="absolute" style="bottom: 60px; "></p>
+<aside class="notes">
+<ul>
+<li>requires no manual compilation</li>
+<li>no C knowledge needed to work with SCIP</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><ol class="aside-footnotes"><li id="fn3"><p><a href="https://github.com/scipopt/PySCIPOpt" class="uri">https://github.com/scipopt/PySCIPOpt</a></p></li></ol></aside></section>
+<section id="modeling-example" class="slide level2" data-visibility="uncounted">
+<h2>Modeling example</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><br></p>
+<p>Mathematical formulation <span class="math display">\[\begin{align*}
+    &amp;\text{minimize}   &amp; x + 3y     &amp;                \\
+    &amp;\text{subject to} &amp; 2x - y^2   &amp; \geq 10        \\
+    &amp;                  &amp; x, y       &amp; \geq 0         \\
+    &amp;                  &amp; x          &amp; \in \mathbb{R} \\
+    &amp;                  &amp; y          &amp; \in \mathbb{Z} \\
+\end{align*}\]</span></p>
+</div><div class="column" style="width:55%;">
+<p><br></p>
+<p>Python code</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pyscipopt <span class="im">import</span> Model</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>m <span class="op">=</span> Model()</span>
+<span id="cb1-4"><a href="#cb1-4"></a>x <span class="op">=</span> m.addVar(<span class="st">"x"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>y <span class="op">=</span> m.addVar(<span class="st">"y"</span>, vtype<span class="op">=</span><span class="st">"I"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>m.setObjective(x <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>y)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>m.addCons(<span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> y<span class="op">*</span>y <span class="op">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li>allows natural and human-readable model formulations</li>
+<li>inspired by Gurobi’s Python interface</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>rapid prototyping without recompilation</li>
+<li>easy access to vast library of Python modules</li>
+<li>design principles:
+<ul>
+<li>wrapper around SCIP’s C functions</li>
+<li>additional convenience functions</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<img src="images/all_logos.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="defense_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="defense_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="defense_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="defense_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': false,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+    
+    
+
+</body></html>
